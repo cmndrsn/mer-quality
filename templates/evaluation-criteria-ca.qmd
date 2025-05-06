@@ -1,0 +1,224 @@
+---
+title: "MER Quality Assessment Template"
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+::: {#motivation}
+# MOTIVATION
+:::
+
+From Gebru et al. (2019)
+
+**For what purpose was the dataset created?** Was there a specific task
+in mind? Was there a specific gap that needed to be filled? Please
+provide a description.
+
+```{r echo = FALSE}
+shiny::textInput('Q1', "Answer here:")
+shiny::selectInput('R1', 'Rating', 1:5)
+```
+
+**Who created this dataset (e.g., which team, research group) and on
+behalf of which entity (e.g., company, institution, organization)?**\
+
+```{r echo = FALSE}
+shiny::textInput('Q2', "Answer here:")
+shiny::selectInput('R2', 'Rating', 1:5)
+```
+
+**What support was needed to make this dataset?** (e.g. who funded the
+creation of the dataset? If there is an associated grant, provide the
+name of the grantor and the grant name and number, or if it was
+supported by a company or government agency, give those details.)\
+
+```{r echo = FALSE}
+shiny::textInput('Q3', "Answer here:")
+shiny::selectInput('R3', 'Rating', 1:5)
+```
+
+Adapted from Wang & Strong (1996,7)
+
+::: {#intrinsic}
+# INTRINSIC DQ
+:::
+
+**How effectively does the task paradigm draw from relevant theories?**
+Does the task draw from prevailing theories of emotion? Are any
+compromises made, or inconsistencies introduced, when adapting theory
+for the research task?
+
+```{r echo = FALSE}
+shiny::textInput('Q4', "Answer here:")
+shiny::selectInput('R4', 'Rating', 1:5)
+```
+
+**Were additional analyses conducted to assess the reliability of
+results (e.g. inter-rater reliability measures, cross-validation)?** Do
+decisions give the impression these results are generalizable?
+
+```{r echo = FALSE}
+shiny::textInput('Q5', "Answer here:")
+shiny::selectInput('R5', 'Rating', 1:5)
+```
+
+**Do study design decisions (measurement construct; participant
+recruitment; stimulus, feature, and model selection) lead to the
+impression the study results are believable and replicable?** How could
+design decisions be changed to improve believability?
+
+```{r echo = FALSE}
+shiny::textInput('Q6', "Answer here:")
+shiny::selectInput('R6', 'Rating', 1:5)
+```
+
+**How reputable is the study, based on readership/citation metrics since
+its publication?**
+
+```{r echo = FALSE}
+shiny::textInput('Q7', "Answer here:")
+shiny::selectInput('R7', 'Rating', 1:5)
+```
+
+::: {#accessibility}
+# ACCESSIBILITY DQ
+:::
+
+**Are the data from this project publicly available?** Do any barriers
+exist that could impact the reproducibility of the project? (e.g.,
+copyright issues, lack of documentation, poor repository management).
+
+```{r echo = FALSE}
+shiny::textInput('Q8', "Answer here:")
+shiny::selectInput('R8', 'Rating', 1:5)
+```
+
+From Gebru et al. (2019)
+
+**Is the dataset self-contained, or does it link to or otherwise rely on
+external resources (e.g., websites, tweets, other datasets)?** If it
+links to or relies on external resources, a) are there guarantees that
+they will exist, and remain constant, over time; b) are there official
+archival versions of the complete dataset (i.e., including the external
+resources as they existed at the time the dataset was created); c) are
+there any restrictions (e.g., licenses, fees) associated with any of the
+external resources that might apply to a future user?
+
+```{r echo = FALSE}
+shiny::textInput('Q9', "Answer here:")
+shiny::selectInput('R9', 'Rating', 1:5)
+```
+
+**Do users require special permissions to access the data?** Are costs
+associated with the creation of the dataset reported?
+
+```{r echo = FALSE}
+shiny::textInput('Q10', "Answer here:")
+shiny::selectInput('R10', 'Rating', 1:5)
+```
+
+::: {#contextual}
+## CONTEXTUAL DQ
+:::
+
+From Gebru et al. (2019)
+
+**Does the dataset contain all possible instances or is it a sample (not
+necessarily random) of instances from a larger set?** If the dataset is
+a sample, then what is the larger set? Is the sample representative of
+the larger set (e.g., geographic coverage)? If so, please describe how
+this representativeness was validated/verified. If it is not
+representative of the larger set, please describe why not (e.g., to
+cover a more diverse range of instances, because instances were withheld
+or unavailable).
+
+```{r echo = FALSE}
+shiny::textInput('Q11', "Answer here:")
+shiny::selectInput('R11', 'Rating', 1:5)
+```
+
+**If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?**
+
+```{r echo = FALSE}
+shiny::textInput('Q12', "Answer here:")
+shiny::selectInput('R12', 'Rating', 1:5)
+```
+
+**Does the dataset reflect functional open data practices?** How easily
+accessible is the dataset to new users?
+
+```{r echo = FALSE}
+shiny::textInput('Q13', "Answer here:")
+shiny::selectInput('R13', 'Rating', 1:5)
+```
+
+**Relative to the existing literature, what is the value added by the
+dataset?** Does the project fill an identifiable gap in the literature?
+
+```{r echo = FALSE}
+shiny::textInput('Q14', "Answer here:")
+shiny::selectInput('R14', 'Rating', 1:5)
+```
+
+**Is the public-facing dataset available in its complete form?** In
+other words, is enough data provided that the analyses reported in the
+accompanying paper can be reproduced?
+
+```{r echo = FALSE}
+shiny::textInput('Q15', "Answer here:")
+shiny::selectInput('R15', 'Rating', 1:5)
+```
+
+**How many observations of each type of instance are available?** e.g.,
+stimuli, participants, annotations.
+
+```{r echo = FALSE}
+shiny::textInput('Q16', "Answer here:")
+shiny::selectInput('R16', 'Rating', 1:5)
+```
+
+::: {#representation}
+## REPRESENTATIONAL DQ
+:::
+
+**Is the dataset documentation complete and clearly understandable?** Is
+sufficient information provided to understand how data are stored (e.g.,
+repository structure and filenames), represented (column names, data,
+and metadata), and analyzed (preprocessing/analysis scripts)?
+
+```{r echo = FALSE}
+shiny::textInput('Q17', "Answer here:")
+shiny::selectInput('R17', 'Rating', 1:5)
+```
+
+**Are data represented concisely?** Are data provided in a
+human-readable format? Are redundant observations, verbose labels, or
+missing values/outliers accounted for in preprocessing and/or
+documentation?
+
+```{r echo = FALSE}
+shiny::textInput('Q18', "Answer here:")
+shiny::selectInput('R18', 'Rating', 1:5)
+```
+
+**Are measured constructs represented in a manner that is internally and
+externally consistent** In other words, are frameworks employed
+consistently employed throughout the study, as well as with other
+studies in the literature?
+
+```{r echo = FALSE}
+shiny::textInput('Q19', "Answer here:")
+shiny::selectInput('R19', 'Rating', 1:5)
+```
+
+**What demographic/level of expertise do the annotators represent?**
+Does the design of study account for differences in expertise, primary
+language, demographics? If so, is this information available to users of
+the dataset?
+
+```{r echo = FALSE}
+shiny::textInput('Q20', "Answer here:")
+shiny::selectInput('R20', 'Rating', 1:5)
+```
