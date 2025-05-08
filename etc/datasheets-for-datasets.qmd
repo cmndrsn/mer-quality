@@ -4,13 +4,13 @@ format: html
 editor: 
   markdown: 
     wrap: 72
-bibliography: references.bib
+bibliographyu: references.bib
 ---
 
 This document was converted from [this LaTeX
 template](https://github.com/AudreyBeard/Datasheets-for-Datasets-Template)
 for *Datasheets for Datasets*, which is an article outlining best
-practices for dataset documentation by @gebru2021da.
+practices for dataset documentation by Gebru et al. [@gebru2021da]
 
 ::: mdframed
 # MOTIVATION {#motivation .unnumbered}
@@ -308,6 +308,6 @@ communicating/distributing these contributions to other users? If so,
 please provide a description.\
 YOUR ANSWER HERE\
 **Any other comments?**\
-YOUR ANSWER HERE
+YOUR ANSWER HERE\
 
 # References
