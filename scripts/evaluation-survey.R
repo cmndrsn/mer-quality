@@ -1,40 +1,58 @@
+
+# Read in data and functions --------------------------------------
+
 # Load in custom response function
 
 source("lib/psychTestR.R")
 
-# Read in spreadsheet
+# populate with final selection of databases
+
+mer_data <- c(
+  "Dataset 1",
+  "Dataset 2",
+  "Dataset 3"
+)
+
+# Read in spreadsheet containing prompts
 
 df_qualimer <- read.csv(
   file = "data/quality-survey-items.csv"
 )
 
-# filter by response type
+
+# Define behaviour of study phases --------------------------------
+
+# Info text pertaining to introduction
 
 items_introduce <- dplyr::filter(
   df_qualimer,
   task == "introduce"
 )
 
+# Info text pertaining to study debrief
+
 items_debrief <- dplyr::filter(
   df_qualimer,
   task == "debrief"
 )
+
+# Items participants write responses about (e.g., datasheet writing)
 
 items_annotate <- dplyr::filter(
   df_qualimer,
   task == "annotate"
 )
 
+# Items participants evaluate with text and a rating (e.g., DQ category)
+
 items_evaluate <- dplyr::filter(
   df_qualimer,
   task == "evaluate"
 )
 
-# create module for prompting answers 
+# Define response functions ---------------------------------------
 
-## This function will be used in a module for providing
-## text responses using psychTestR.
-
+# Response involves clicking "next", nothing fancy.
 
 response_next <- function(
   object
@@ -43,6 +61,8 @@ response_next <- function(
     body = object
   )
 }
+
+# Response involves writing in a text box.
 
 response_annotate <- function(
     object
@@ -56,8 +76,7 @@ response_annotate <- function(
   )
 }
 
-## This function will be used in a module for evaluating
-## dataset quality dimensions
+# Response involves writing in a textbox and choosing a numeric rating.
 
 response_evaluate <- function(
   object
@@ -71,7 +90,17 @@ response_evaluate <- function(
 }
 
 
-# Create modules for evaluation survey ----------------------------
+# Create pages and modules for evaluation survey -----------------------
+
+# define routine to select from options
+
+df_selection <- psychTestR::dropdown_page(
+  "dataset-selection", 
+  "Please select the dataset you will encode", 
+  choices = mer_data
+)
+
+# Populate intro module with relevant text prompts
 
 introduction_module <- psychTestR::module(
   label = "module_introduction",
@@ -81,6 +110,8 @@ introduction_module <- psychTestR::module(
   )
 )
 
+# Populate debrief module with relevant text prompts
+
 debrief_module <- psychTestR::module(
   label = "module_debrief",
   lapply(
@@ -88,6 +119,8 @@ debrief_module <- psychTestR::module(
     response_next
   )
 )
+
+# Populate datasheet module with relevant text prompts
 
 datasheets_module <- psychTestR::module(
   label = "module_data_sheets",
@@ -97,6 +130,7 @@ datasheets_module <- psychTestR::module(
   )
 )
 
+# Populate DQ evaluation module with relevant text prompts
 
 evaluation_module <- psychTestR::module(
   label = "module_data_quality",
@@ -106,24 +140,31 @@ evaluation_module <- psychTestR::module(
   )
 )
 
-
+# Define survey timeline ------------------------------------------
 
 timeline <- psychTestR::join(
   introduction_module,
-  psychTestR::one_button_page("You have now begun Stage 1. 
+  df_selection,
+  psychTestR::one_button_page(
+    "We will now begin Stage 1. 
     Please complete the following prompts
     to fill in a datasheet about the current dataset"
   ),
   datasheets_module,
-  psychTestR::one_button_page("You have now begun Stage 2. 
+  psychTestR::one_button_page(
+    "We will now start Stage 2. 
     Please complete the following prompts
     to evaluate quality items for the dataset"
   ),
   evaluation_module,
   psychTestR::elt_save_results_to_disk(complete = TRUE),
   debrief_module,
-  psychTestR::final_page("Thank you for completing the survey.")
+  psychTestR::final_page(
+    "Thank you for completing the survey."
+  )
 )
+
+# Create survey ---------------------------------------------------
 
 psychTestR::make_test(
   timeline,
