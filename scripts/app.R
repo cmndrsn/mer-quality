@@ -1,11 +1,9 @@
 # Read in data and functions --------------------------------------
 
 source(
-  paste0(
-    here::here(),
     "/lib/psychTestR.R"
   )
-)
+
 
 # populate with final selection of databases
 
@@ -18,10 +16,7 @@ mer_data <- c(
 # Read in spreadsheet containing prompts
 
 df_qualimer <- read.csv(
-  file = paste0(
-    here::here(),
     "/data/quality-survey-items.csv"
-  )
 )
 
 

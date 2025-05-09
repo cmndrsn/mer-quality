@@ -1,35 +1,38 @@
-# Base image 
-FROM rocker/shiny
-
-# Create directories
-RUN mkdir -p /scripts
-RUN mkdir -p /lib
-RUN mkdir -p /data
-RUN mkdir -p /renv
-RUN mkdir -p /output
-
-# Install renv
-RUN R -e "install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))"
-
-# Copy files required to run app
-COPY /scripts/app.R /scripts/app.R 
-COPY /lib/psychTestR.R /lib/psychTestR.R
-COPY /data/quality-survey-items.csv /data/quality-survey-items.csv
-
+# Stage 1: base image
+FROM rocker/shiny AS base
 # Install curl dependency
 RUN apt-get update && apt-get install -y libssl-dev 
 RUN apt-get install -y libcurl4-openssl-dev
 CMD /bin/bash
 
-# Manage packages with renv
-COPY renv.lock renv.lock
-# copy renv files
+
+WORKDIR /project
+# set up renv
 RUN mkdir -p renv
+COPY renv.lock renv.lock
 COPY .Rprofile .Rprofile
 COPY renv/activate.R renv/activate.R
 COPY renv/settings.json renv/settings.json
-# restore renv packages
-RUN R -e "renv::restore(repos='https://cloud.r-project.org')"
+
+# change default location of cache to project folder
+RUN mkdir renv/.cache
+ENV RENV_PATHS_CACHE renv/.cache
+
+# Stage 2: renv set-up
+FROM base
+
+WORKDIR /project
+COPY --from=base /project .
+
+
+# restore
+WORKDIR /project
+RUN R -e "renv::restore()"
+
+# Copy files required to run app
+COPY /scripts/app.R /scripts/app.R 
+COPY /lib/psychTestR.R /lib/psychTestR.R
+COPY /data/quality-survey-items.csv /data/quality-survey-items.csv
 
 EXPOSE 8080
 
