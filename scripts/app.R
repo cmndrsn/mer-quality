@@ -1,9 +1,11 @@
-
 # Read in data and functions --------------------------------------
 
-# Load in custom response function
-
-source("lib/psychTestR.R")
+source(
+  paste0(
+    here::here(),
+    "/lib/psychTestR.R"
+  )
+)
 
 # populate with final selection of databases
 
@@ -16,7 +18,10 @@ mer_data <- c(
 # Read in spreadsheet containing prompts
 
 df_qualimer <- read.csv(
-  file = "data/quality-survey-items.csv"
+  file = paste0(
+    here::here(),
+    "/data/quality-survey-items.csv"
+  )
 )
 
 
@@ -166,10 +171,17 @@ timeline <- psychTestR::join(
 
 # Create survey ---------------------------------------------------
 
-psychTestR::make_test(
+questionnaire <- psychTestR::make_test(
   timeline,
   opt = psychTestR::test_options(
     title = "MER Quality Evaluation",
     admin_password = 'test'
   )
+) 
+
+shiny::runApp(
+  questionnaire,
+  host = '0.0.0.0',
+  port = 8080
 )
+
