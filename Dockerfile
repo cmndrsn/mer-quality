@@ -34,7 +34,7 @@ COPY /scripts/app.R /scripts/app.R
 COPY /lib/psychTestR.R /lib/psychTestR.R
 COPY /data/quality-survey-items.csv /data/quality-survey-items.csv
 
-EXPOSE 8080
+EXPOSE 3838
 
 # Run app
 CMD Rscript /scripts/app.R
