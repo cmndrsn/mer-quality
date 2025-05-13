@@ -1,7 +1,7 @@
 # Read in data and functions --------------------------------------
 
 source(
-    "/lib/psychTestR.R" # "lib/psychTestR.R" functional for mac os, might use source(file.path('lib','psychTestR.R'))
+    "lib/psychTestR.R" 
   )
 
 
@@ -16,7 +16,7 @@ mer_data <- c(
 # Read in spreadsheet containing prompts
 
 df_qualimer <- read.csv(
-    "/data/quality-survey-items.csv" # "data/quality-survey-items.csv" functional for mac os
+    "data/quality-survey-items.csv" # "data/quality-survey-items.csv" functional for mac os
 )
 
 
