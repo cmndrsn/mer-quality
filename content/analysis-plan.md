@@ -3,16 +3,15 @@ title: "analysis-plan"
 output: html_document
 ---
 
-## Step 1. Definition of qualities to be annotated
-
+## Step 1. Definition of annotation qualities
 See [content/survey-items.md](content/survey-items.md)
 
-## Step 2. Choosing datasets to be annotated
+## Step 2. Choosing datasets
 See [datasets.md](datasets.md)
 
-## Step 3. Annotation Consistency Assessment
+## Step 3. Annotation Consistency
 
-### 3.1 How to resolve factual statements
+### 3.1 Resolving factual statements
 
 Definition of a scheme where we resolve any conflicting factual statements about the annotations. For instance, two annotators give different stimulus N, different number of emotion categories, or availability of materials in the annotations.
 
@@ -20,9 +19,7 @@ After the first pass, we could calculate the agreement (as a categorical entity)
 
 I suggest that any discrepancies are, however, resolved by finding a **consensus** (annotators go back a resolve the discrepancy and document the issue).
 
-## Step 4: Quality Score Aggregation
-
-### 4.1 How to determine likert scale agreement
+### 3.1 How to determine likert scale agreement
 
 **Consistency**: To assess the inter-rater agreement, we can use ICC (Intraclass Correlation Coefficient), or preferable Omega (McDonald's $\omega$) or Kendall's Concordance (_W_) if we think these are ordinal data and not interval data. Omega is probably the best here.
 
@@ -32,6 +29,8 @@ If the omega is poor (say, <0.50) have either:
 a) flag items and the same annotators reannotate the item after discussing the definition (clarification)
 b) add a new annotator and evaluate with a new evaluator included. Optionally evaluate after excluding the annotator that is considered an outlier
 c) master reviewer approach, where one person (4th person who has not annotated the item makes the final determination)
+
+## Step 4: Score Aggregation
 
 ### 4.1 How to aggregate scores
 
