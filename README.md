@@ -4,13 +4,13 @@ Quality analysis of MER datasets
 
 ## Qualities to be annotated
 
-See [content/survey-items.md](content/survey-items.md)
+See [survey-items.md](content/survey-items.md)
 
 ## Datasets to be annotated
 
-See [datasets.md](datasets.md)
+See [datasets.md](content/datasets.md)
 
 ## Annotation Consistency
 
-See [content/analysis-plan.md](content/analysis-plan.md)
+See [analysis-plan.md](content/analysis-plan.md)
 
