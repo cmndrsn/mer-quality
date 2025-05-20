@@ -23,6 +23,7 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 -   [EMMA](https://osf.io/7ptmd/)
 -   [EMOPIA](https://annahung31.github.io/EMOPIA/)
 -   [Emotify](https://github.com/cmndrsn/mer-quality/issues/3#emotify)
+-   [GlobalMood](https://osf.io/8c5f2)
 -   [MERGE](https://arxiv.org/html/2407.06060v1)
 -   [Moodo](https://github.com/cmndrsn/mer-quality/issues/3#moodo)
 -   [MTG-Jamendo](https://multimediaeval.github.io/2019-Emotion-and-Theme-Recognition-in-Music-Task/)
@@ -36,6 +37,7 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 -   [Soundtracks](https://osf.io/p6vkg/wiki/home/)
 -   [TROMPA‐MER](https://github.com/juansgomez87/vis-mtg-mer)
 -   [VGMIDI](https://github.com/cmndrsn/mer-quality/issues/3#vgmidi)
+
 
 
 ## Discarded
