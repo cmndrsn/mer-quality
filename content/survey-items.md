@@ -28,8 +28,7 @@ output: html_document
 
 #### Collection
 
--   Accuracy can be improved by user-centered approaches for data labeling and augmentation.
--   Examples include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.
+-   Accuracy can be improved by user-centered approaches for data labeling and augmentation. Examples include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.
 -   (If applicable) Study provides information about screening and training of annotators, if applicable.
 
 #### Cleaning & preprocessing
@@ -51,25 +50,22 @@ output: html_document
 #### Use case & design
 
 -   The paper provides the impression features were selected in advance of modeling
--   Data samples are clearly (and convincingly) justified:
-    -   Features
-    -   Emotion taxonomies and constructs
-    -   Music stimuli and genre coverage
-    -   Participant source and expertise
+-   Data samples are clearly (and convincingly) justified for features selection
+-   Data samples are clearly (and convincingly) justified for emotion taxonomies and constructs
+-   Data samples are clearly (and convincingly) justified for music stimuli and genre coverage
+-   Data samples are clearly (and convincingly) justified for participant source and expertise
 
 #### Collection
 
 -   Context coverage is supported by institutional guidelines on potential power imbalances, ethics and inclusivity
--   The sampling strategy is provided and explained for:
--   stimuli
--   features
--   participants
+-   The sampling strategy is provided and explained for stimuli
+-   The sampling strategy is provided and explained for features
+-   The sampling strategy is provided and explained for participants
 -   The background of annotators is relevant to the music selection and task design.
 
 #### Cleaning & preprocessing
 
--   Contextual bias are detected through comparison with suitable reference standards
--   Examples include real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
+-   Contextual bias are detected through comparison with suitable reference standards. Examples include real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
 -   Data classes are adequately represented and convincingly measure how well the dataset fits the real-world problem.
 
 #### Maintenance
@@ -78,12 +74,14 @@ output: html_document
 
 #### ML building
 
--   Contextual validity is supported by selecting appropriate:
-    -   Features
-    -   Emotion taxonomies and constructs
-    -   Music stimuli and genre
+-   Contextual validity is supported by selecting appropriate features
+-   Contextual validity is supported by selecting appropriate emotion taxonomies and constructs
+-   Contextual validity is supported by selecting appropriate music stimuli and genres
 -   If the dataset contains contextual bias, the training distribution is re-sampled or re-weighted to reduce bias
--   What are the numbers for (1) stimulus N, (2) stimulus length (median), (3) annotator N (if raw data given), (4) N domains of data (eg., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
+-   What are the numbers for stimulus N?
+-   What are the numbers for stimulus length (median)?
+-   What are the numbers for annotator N (if raw data given)? 
+-   What are the numbers for domains of data (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
 
 #### Verification & testing
 
@@ -116,10 +114,9 @@ output: html_document
 
 -   Maintainability at scale is supported by standards
 -   Clarity of the dataset is supported by user interfaces for dataset exploration
--   Clarity of the metadata is supported by documentation on
-    -   Data content
-    -   Maintenance plan
-    -   Mission statement
+-   Clarity of the metadata is supported by documentation on data content
+-   Clarity of the metadata is supported by documentation on the maintenance plan
+-   Clarity of the metadata is supported by documentation on the mission statement
 
 #### ML building
 
@@ -153,14 +150,13 @@ output: html_document
 -   Availability of data is facilitated by infrastructure for differential access and sharing
 -   Identifiability of the correct dataset (out of multiple versions) is guided by version control and DOIs
 -   The documentation and instructions (specific wording that the annotators saw) for the annotation task are available
--   The data description is fully covered in the documentation for:
-    -   Amount of data (see above)
-    -   Genre(s)
-    -   Domains of data
-    -   Annotator expertise and culture
-    -   Annotation task
-    -   Excerpt duration
-    -   Source where available
+-   The data description is fully covered in the documentation for the amount of data
+-   The data description is fully covered in the documentation for the selected genre(s)
+-   The data description is fully covered in the documentation for the domains of data
+-   The data description is fully covered in the documentation for annotator expertise and culture
+-   The data description is fully covered in the documentation for the annotation task
+-   The data description is fully covered in the documentation for the excerpt duration
+-   The data description is fully covered in the documentation for the source where available
 
 #### ML building
 
