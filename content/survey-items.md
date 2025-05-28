@@ -6,6 +6,10 @@ output: html_document
 # Item adaptation
 
 ## [Priestley et al. (2023)](https://dl.acm.org/doi/10.1145/3592616#core-Bib0003); [Gebru et al. (2019)](https://arxiv.org/pdf/1803.09010)
+- Intrisic: Intrinsic data quality has traditionally been understood to reflect the extent to which data values conform to the actual or true values; this includes specific requirements such as accuracy, provenance and cleanliness, the latter of which covers practices such as the addressing missing values and redundant cases. Besides the usual data qualities needed for statistical analysis (e.g., addressing missing data, anomalies), an intrinsic quality that is increasingly valued by ML practitioners and regulators relates to data lineage and traceability.
+- Contextual data quality relates to the extent to which data are pertinent to the task of the data user; this includes dimensions such as relevance, timeliness, completeness and appropriateness. An essential question that is considered here is the extent to which the sample of cases contained in the dataset diverges from the true distribution of cases that are likely to be encountered when the ML model is deployed. Possible sources of divergence may include historical time or geographic representation.
+- Representational data quality refers to the extent to which data are presented in an intelligible and clear manner, including requirements such as being interpretable, easy to understand, and represented concisely and consistently. In practical terms, these qualities can be implemented through practices such as standardisation and documentation. Standardisation refers to conventions for capturing information in a consistent manner, including machine-readable data structures and formats for capturing specific attributes (e.g., date, location, measurement error). This helps engineers to ingest datasets from multiple sources and build interoperable solutions. Documentation about the dataset provides an additional layer of descriptive information to support the creation of ML applications.
+- The accessibility category refers to the extent to which data are available, obtainable and secure. The rise of big data and ML applications in recent decades has been accompanied by calls for publishing datasets in an open manner, as well as secure access mechanisms for restricted datasets, so that their value can be realised. For ML stakeholders who work with personal or commercially sensitive data, advances in the accessibility of data have been tempered by security and legal precautions (e.g., compliance with GDPR and intellectual property rights).
 
 ## Table 3
 
@@ -22,7 +26,7 @@ output: html_document
 #### Use case & design
 
 -   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students)
--   Reliability of annotations are adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
+-   Reliability of annotations is adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
 -   The estimated cost of establishing the dataset is reported.
 -   The value of the data significant in terms of the cost invested (e.g. over \$5000) or culture-specific expertise.
 
@@ -65,7 +69,7 @@ output: html_document
 
 #### Cleaning & preprocessing
 
--   Contextual bias are detected through comparison with suitable reference standards. Examples include real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
+-   Contextual bias is detected through comparison with suitable reference standards. Examples include real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
 -   Data classes are adequately represented and convincingly measure how well the dataset fits the real-world problem.
 
 #### Maintenance
@@ -120,7 +124,7 @@ output: html_document
 
 #### ML building
 
--   Clarity of the ML building process are elucidated using model reproducibility checklists or by embedding structured meta-knowledge into the documentation.
+-   Clarity of the ML building process is elucidated using model reproducibility checklists or by embedding structured meta-knowledge into the documentation.
 -   Clarity of model performance is supported by documentation on evaluation metrics and statistics
 
 #### Verification & testing
