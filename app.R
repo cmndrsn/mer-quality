@@ -6,11 +6,16 @@ sapply(list.files("lib/", full.names = TRUE), source)
 
 df_survey <- survey_items_df()
 
+# add headings based on dimension and category columns
+
+df_survey$heading <- paste(df_survey$dimension, "-", df_survey$category)
+df_survey$heading <- trimws(sub("^\\s+-*", "", df_survey$heading))
+
 # Remove crossed-out items
 
 df_survey <- df_survey[!stringr::str_detect(df_survey$prompt, "~~"),]
 
-df_survey$prompt <- paste0("**", df_survey$category, "** ", df_survey$prompt)
+df_survey$prompt <- paste0("**", df_survey$heading, "** ", df_survey$prompt)
 
 # Define behaviour of study phases --------------------------------
 
