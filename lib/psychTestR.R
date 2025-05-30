@@ -115,8 +115,6 @@ one_button_custom <- function (
       )
     )
   )
-  
-  #body <-  psychTestR:::tagify(body)
   stopifnot(
     psychTestR:::is.scalar.character(
       button_text

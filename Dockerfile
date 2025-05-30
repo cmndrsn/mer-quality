@@ -30,11 +30,16 @@ WORKDIR /project
 RUN R -e "renv::restore()"
 
 # Copy files required to run app
-COPY /scripts/app.R /scripts/app.R 
-COPY /lib/psychTestR.R /lib/psychTestR.R
-COPY /data/quality-survey-items.csv /data/quality-survey-items.csv
+RUN mkdir -p lib
+RUN mkdir -p content
+COPY lib/psychTestR.R lib/psychTestR.R
+COPY lib/survey-items-df.R lib/survey-items-df.R
+COPY lib/get-datasets.R lib/get-datasets.R
+COPY content/survey-items.md content/survey-items.md
+COPY content/datasets.md content/datasets.md
+COPY app.R app.R 
 
 EXPOSE 3838
 
 # Run app
-CMD Rscript /scripts/app.R
+CMD Rscript app.R

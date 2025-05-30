@@ -6,24 +6,29 @@ output: html_document
 # Item adaptation
 
 ## [Priestley et al. (2023)](https://dl.acm.org/doi/10.1145/3592616#core-Bib0003); [Gebru et al. (2019)](https://arxiv.org/pdf/1803.09010)
+<!-- heading left blank for formatting purposes-->
+###
 
-### Data Quality Categories
+#### Introduction
+
+- In this interactive module, you will be asked to annotate and evaluate the quality of open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from two highly influential papers in the Data Quality literature by  Priestley et al. (2023) and Gebru et al. (2019), either adapting or directly adopting questions in an effort to improve documentation surrounding MER datasets.
+- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019). In a second stage, you will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
 
 #### Definitions
 
-- **Intrisic** data quality has traditionally been understood to reflect the extent to which data values conform to the actual or true values; this includes specific requirements such as accuracy, provenance and cleanliness, the latter of which covers practices such as the addressing missing values and redundant cases. Besides the usual data qualities needed for statistical analysis (e.g., addressing missing data, anomalies), an intrinsic quality that is increasingly valued by ML practitioners and regulators relates to data lineage and traceability.
-- **Contextual** data quality relates to the extent to which data are pertinent to the task of the data user; this includes dimensions such as relevance, timeliness, completeness and appropriateness. An essential question that is considered here is the extent to which the sample of cases contained in the dataset diverges from the true distribution of cases that are likely to be encountered when the ML model is deployed. Possible sources of divergence may include historical time or geographic representation.
-- **Representational** data quality refers to the extent to which data are presented in an intelligible and clear manner, including requirements such as being interpretable, easy to understand, and represented concisely and consistently. In practical terms, these qualities can be implemented through practices such as standardisation and documentation. Standardisation refers to conventions for capturing information in a consistent manner, including machine-readable data structures and formats for capturing specific attributes (e.g., date, location, measurement error). This helps engineers to ingest datasets from multiple sources and build interoperable solutions. Documentation about the dataset provides an additional layer of descriptive information to support the creation of ML applications.
-- **Accessibility** data quality refers to the extent to which data are available, obtainable and secure. The rise of big data and ML applications in recent decades has been accompanied by calls for publishing datasets in an open manner, as well as secure access mechanisms for restricted datasets, so that their value can be realised. For ML stakeholders who work with personal or commercially sensitive data, advances in the accessibility of data have been tempered by security and legal precautions (e.g., compliance with GDPR and intellectual property rights).
+- You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ.
+- Intrisic Data Quality has traditionally been understood to reflect the extent to which data values conform to the actual or true values; this includes specific requirements such as accuracy, provenance and cleanliness, the latter of which covers practices such as the addressing missing values and redundant cases. Besides the usual data qualities needed for statistical analysis (e.g., addressing missing data, anomalies), an intrinsic quality that is increasingly valued by ML practitioners and regulators relates to data lineage and traceability.
+- Contextual Data Quality relates to the extent to which data are pertinent to the task of the data user; this includes dimensions such as relevance, timeliness, completeness and appropriateness. An essential question that is considered here is the extent to which the sample of cases contained in the dataset diverges from the true distribution of cases that are likely to be encountered when the ML model is deployed. Possible sources of divergence may include historical time or geographic representation.
+- Representational Data Quality refers to the extent to which data are presented in an intelligible and clear manner, including requirements such as being interpretable, easy to understand, and represented concisely and consistently. In practical terms, these qualities can be implemented through practices such as standardisation and documentation. Standardisation refers to conventions for capturing information in a consistent manner, including machine-readable data structures and formats for capturing specific attributes (e.g., date, location, measurement error). This helps engineers to ingest datasets from multiple sources and build interoperable solutions. Documentation about the dataset provides an additional layer of descriptive information to support the creation of ML applications.
+- Accessibility Data Quality refers to the extent to which data are available, obtainable and secure. The rise of big data and ML applications in recent decades has been accompanied by calls for publishing datasets in an open manner, as well as secure access mechanisms for restricted datasets, so that their value can be realised. For ML stakeholders who work with personal or commercially sensitive data, advances in the accessibility of data have been tempered by security and legal precautions (e.g., compliance with GDPR and intellectual property rights).
 
-### Dataset Description
+### Datasheet
 
--   **For what purpose was the dataset created?** Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.
+#### Dataset Description
 
--   **Who created this dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?**\
-
--   **What support was needed to make this dataset?** (e.g. who funded the creation of the dataset? If there is an associated grant, provide the name of the grantor and the grant name and number, or if it was supported by a company or government agency, give those details.)\
-
+-   For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.
+-   Who created this dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?
+-   What support was needed to make this dataset? (e.g. who funded the creation of the dataset? If there is an associated grant, provide the name of the grantor and the grant name and number, or if it was supported by a company or government agency, give those details.)
 -   What is the stimulus N?
 -   What is the stimulus length (median)?
 -   What is the number of annotators (if raw data given)? 
@@ -153,6 +158,10 @@ output: html_document
 -   Test data annotations are publicly available
 -   If parts of the data (music, lyrics, album covers, etc) are copyrighted, pre-calculated features are accessible with reasonable effort.
 
+### 
+
+#### Debrief
+- Thank you for your time. Further reading: Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. Journal of management information systems, 12(4), 5-33. Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Iii, H. D., & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92.
 
 #### TODO
 

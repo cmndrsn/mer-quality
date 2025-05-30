@@ -9,12 +9,15 @@ Update from the past list of datasets: <https://github.com/juansgomez87/datasets
 
 Before creating a more tabular summary of the datasets, we can keep track of the progress with a simple code assuming we have 4 evaluators (A, B, C, and D or J, C, T, X):
 
-	- [ ] = Not evaluated
-	- [Elim] = Eliminated (for specific reasons)
-	- [a, b, c] = Annotation tasked to A, B and C (evaluators)
-	- [A, B, C] = Annotation completed by A, B and C (evaluators)
-	- [Complete] = Annotation and consistency analysis complete
+```         
+- [ ] = Not evaluated
+- [Elim] = Eliminated (for specific reasons)
+- [a, b, c] = Annotation tasked to A, B and C (evaluators)
+- [A, B, C] = Annotation completed by A, B and C (evaluators)
+- [Complete] = Annotation and consistency analysis complete
+```
 
+### Datasets
 
 -   [AMG1608](https://github.com/loichan-tw/AMG1608_release) [ ]
 -   [CCMED-WCMED](https://github.com/cmndrsn/mer-quality/issues/3#ccmed-wcmed) [ ]
@@ -37,8 +40,6 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 -   [Soundtracks](https://osf.io/p6vkg/wiki/home/)
 -   [TROMPA‐MER](https://github.com/juansgomez87/vis-mtg-mer)
 -   [VGMIDI](https://github.com/cmndrsn/mer-quality/issues/3#vgmidi)
-
-
 
 ## Discarded
 
