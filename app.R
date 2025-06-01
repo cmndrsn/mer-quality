@@ -148,6 +148,13 @@ server <- function(input, output, session) {
   )
 }
 
-shinyApp(ui = ui, server = server)
+questionnaire <- shinyApp(
+  ui = ui, 
+  server = server
+)
 
-
+shiny::runApp(
+  questionnaire,
+  host = '0.0.0.0',
+  port = 3838
+)
