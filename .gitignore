@@ -50,3 +50,6 @@ rsconnect/
 
 # Evaluation folder
 eval/
+
+# Operating-system specific files
+.DS_Store
