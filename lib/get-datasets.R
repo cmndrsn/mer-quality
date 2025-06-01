@@ -1,6 +1,6 @@
 # Read in dataset markdown file
 df_md <- read.delim(
-    'content/datasets.md', 
+    here::here('content/datasets.md'),
     sep = '\n',
     col.names = 'prompt'
   )

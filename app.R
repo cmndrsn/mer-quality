@@ -1,179 +1,153 @@
-# Read in data and functions --------------------------------------
+# load libraries
 
-sapply(list.files("lib/", full.names = TRUE), source)
+library(shiny)
 
-# Read in spreadsheet containing prompts
+# source preprocessing script
 
-df_survey <- survey_items_df()
+source(here::here("scripts/preprocessing.R"))
 
-# add headings based on dimension and category columns
+# create ui
 
-df_survey$heading <- paste(df_survey$dimension, "-", df_survey$category)
-df_survey$heading <- trimws(sub("^\\s+-*", "", df_survey$heading))
-
-# Remove crossed-out items
-
-df_survey <- df_survey[!stringr::str_detect(df_survey$prompt, "~~"),]
-
-df_survey$prompt <- paste0("**", df_survey$heading, "** ", df_survey$prompt)
-
-# Define behaviour of study phases --------------------------------
-
-# Info text pertaining to introduction
-
-items_introduce <- dplyr::filter(
-  df_survey,
-  category %in% c("Introduction", "Definitions")
+ui <- fluidPage(
+  titlePanel("MER Quality Analysis"),
+  sidebarLayout(
+    sidebarPanel(
+      fixedPanel(textOutput("progress")),
+      hr(),
+      actionButton("previous", "Previous"),
+      actionButton("next", "Next"),
+      downloadButton("download", "Download CSV of responses")
+    ),
+    mainPanel(
+      htmlOutput("heading"),
+      textOutput("prompt"),
+      uiOutput("ui")
+    ),
+  )
 )
 
-# Info text pertaining to study debrief
-
-items_debrief <- dplyr::filter(
-  df_survey,
-  category %in% "Debrief"
-)
-
-# Items participants write responses about (e.g., datasheet writing)
-
-items_annotate <- dplyr::filter(
-  df_survey,
-  category %in% "Dataset Description"
-)
-
-# Items participants evaluate with text and a rating (e.g., DQ category)
-
-items_evaluate <- dplyr::filter(
-  df_survey,
-  dimension %in% c("Intrinsic", "Contextual", "Representational", "Accessibility")
-)
-
-# Define response functions ---------------------------------------
-
-# Response involves clicking "next", nothing fancy.
-
-response_next <- function(
-  object
-) {
-  one_button_custom(
-    body = object
+server <- function(input, output, session) {
+  
+  # track prompt index
+  this_prompt <- reactiveVal(1)
+  # prepare reactive dataframe for storing responses
+  responses <- reactiveValues(
+    data = data.frame(
+      prompt = character(),
+      response = character(),
+      rating = numeric(),
+      rater = character(),
+      dataset = character(),
+      stringsAsFactors = FALSE
+    )
+  )
+  
+  # render heading
+  output$heading <- renderText({
+    heading[this_prompt()] <- paste(
+      "<h3>",
+      heading[
+        this_prompt()
+      ],
+      "</h3>"
+    )
+  })
+  # render prompt
+  output$prompt <- renderText({
+    prompt[this_prompt()]
+  })
+  # update progress bar
+  output$progress <- renderText({
+    progress_bar(this_prompt(), nrow(survey_items))
+  })
+  
+  # conditional logic for response options based on item categories:
+  output$ui <- renderUI({
+    # dropdown for selecting dataset
+    if (this_prompt() %in% ind_dfs) {
+      tagList(
+        textInput("rater", "Please enter your initials"),
+        selectInput(
+          "df", 
+          "Select a dataset", 
+          choices = datasets
+        )
+      )
+      # likert-type rating scale for rating measurements, along with text
+    } else if (this_prompt() %in% ind_rating) {
+      tagList(
+        textAreaInput("response", "Respond here:"),
+        radioButtons("rating", "Item rating:",
+                     c("None selected" = NA, "Strongly Disagree" = 1, "Somewhat Disagree" = 2,
+                       "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5),
+                     inline = TRUE)
+      )
+      # expandable textbox for text-only responses (e.g., datasheet items)
+    }  else if (this_prompt() %in% ind_textbox) {
+      tagList(
+        textAreaInput("response", "Your Response"),
+      )
+      # small textbox for tracking initials of rater.
+    }  else if (this_prompt() %in% ind_rater) {
+      tagList(
+        
+      )
+    } 
+  })
+  
+  # when user advances in survey, save columns based on response type
+  observeEvent(input[["next"]], {
+      responses$data <- rbind(
+        responses$data, 
+          data.frame(
+            # store prompt
+            prompt = prompt[this_prompt()],
+            # store response if question has textbox
+            response = ifelse(
+              this_prompt() %in% c(ind_textbox, ind_rating), 
+              input$response, 
+              ''
+            ),
+            # store rating if question has rating scale
+            rating = ifelse(
+              this_prompt() %in% ind_rating, 
+              input$rating, 
+              ''
+            ),
+            # store 
+            dataset = input$df,
+            rater =  input$rater
+      ))
+      # clear input between questions
+      updateTextInput(session, "response", value = "") 
+      updateRadioButtons(session, "rating", selected = NA)  
+    if (this_prompt() < length(prompt)) {
+      this_prompt(this_prompt() + 1)
+    }
+  })
+  
+  # previous question
+  observeEvent(input[["previous"]], {
+    if (this_prompt() > 1) {
+      this_prompt(this_prompt() - 1)
+    }
+  })
+  
+  # Download responses
+  output$download <- downloadHandler(
+    filename = function() {
+      paste0(
+        'merquality_',
+        unique(input$rater), '_', 
+        unique(input$df), '_', Sys.Date(), '.csv') |>
+        tolower()
+    },
+    content = function(file) {
+      write.csv(responses$data, file, row.names = FALSE)
+    }
   )
 }
 
-# Response involves writing in a text box.
+shinyApp(ui = ui, server = server)
 
-response_annotate <- function(
-    object
-) {
-  text_rating_page(
-    include_rating = FALSE,
-    prompt = object,
-    one_line = FALSE,
-    sprintf("Please evaluate %s in the textbox below",
-            object)
-  )
-}
-
-# Response involves writing in a textbox and choosing a numeric rating.
-
-response_evaluate <- function(
-  object
-) {
-  text_rating_page(
-    include_rating = TRUE,
-    prompt = object,
-    sprintf("Please evaluate %s in the textbox below",
-            object)
-  )
-}
-
-
-# Create pages and modules for evaluation survey -----------------------
-
-# define routine to select from options
-
-df_selection <- psychTestR::dropdown_page(
-  "dataset-selection", 
-  "Please select the dataset you will encode", 
-  choices = mer_data
-)
-
-# Populate intro module with relevant text prompts
-
-introduction_module <- psychTestR::module(
-  label = "module_introduction",
-  lapply(
-    items_introduce$prompt,
-    response_next
-  )
-)
-
-# Populate debrief module with relevant text prompts
-
-debrief_module <- psychTestR::module(
-  label = "module_debrief",
-  lapply(
-    items_debrief$prompt,
-    response_next
-  )
-)
-
-# Populate datasheet module with relevant text prompts
-
-datasheets_module <- psychTestR::module(
-  label = "module_data_sheets",
-  lapply(
-    items_annotate$prompt, 
-    response_annotate
-  )
-)
-
-# Populate DQ evaluation module with relevant text prompts
-
-evaluation_module <- psychTestR::module(
-  label = "module_data_quality",
-  lapply(
-    items_evaluate$prompt, 
-    response_evaluate
-  )
-)
-
-# Define survey timeline ------------------------------------------
-
-timeline <- psychTestR::join(
-  introduction_module,
-  df_selection,
-  psychTestR::one_button_page(
-    "We will now begin Stage 1. 
-    Please complete the following prompts
-    to fill in a datasheet about the current dataset"
-  ),
-  datasheets_module,
-  psychTestR::one_button_page(
-    "We will now start Stage 2. 
-    Please complete the following prompts
-    to evaluate quality items for the dataset"
-  ),
-  evaluation_module,
-  psychTestR::elt_save_results_to_disk(complete = TRUE),
-  debrief_module,
-  psychTestR::final_page(
-    "Thank you for completing the survey."
-  )
-)
-
-# Create survey ---------------------------------------------------
-
-questionnaire <- psychTestR::make_test(
-  timeline,
-  opt = psychTestR::test_options(
-    title = "MER Quality Evaluation",
-    admin_password = 'test'
-  )
-) 
-
-shiny::runApp(
-  questionnaire,
-  host = '0.0.0.0',
-  port = 3838
-)
 
