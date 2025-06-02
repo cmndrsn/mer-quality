@@ -32,11 +32,13 @@ RUN R -e "renv::restore()"
 # Copy files required to run app
 RUN mkdir -p lib
 RUN mkdir -p content
-COPY lib/psychTestR.R lib/psychTestR.R
+RUN mkdir -p scripts
+COPY lib/progress-bar.R lib/progress-bar.R
 COPY lib/survey-items-df.R lib/survey-items-df.R
 COPY lib/get-datasets.R lib/get-datasets.R
 COPY content/survey-items.md content/survey-items.md
 COPY content/datasets.md content/datasets.md
+COPY scripts/preprocessing.R scripts/preprocessing.R
 COPY app.R app.R 
 
 EXPOSE 3838

@@ -1,4 +1,6 @@
-survey_items_df <- function(survey_items = 'content/survey-items.md') {
+survey_items_df <- function(
+    survey_items = here::here('content/survey-items.md')
+  ) {
   # read in markdown file:
   df_md <- read.delim(
     survey_items, 

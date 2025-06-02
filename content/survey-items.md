@@ -6,7 +6,13 @@ output: html_document
 # Item adaptation
 
 ## [Priestley et al. (2023)](https://dl.acm.org/doi/10.1145/3592616#core-Bib0003); [Gebru et al. (2019)](https://arxiv.org/pdf/1803.09010)
-<!-- heading left blank for formatting purposes-->
+
+### 
+
+#### Dataset Selection
+
+- Select a dataset.
+
 ###
 
 #### Introduction
@@ -24,7 +30,7 @@ output: html_document
 
 ### Datasheet
 
-#### Dataset Description
+#### Motivation
 
 -   For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.
 -   Who created this dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?
