@@ -8,7 +8,7 @@ source(here::here("scripts/preprocessing.R"))
 
 # create ui
 
-ui <- fluidPage(
+ui <- bslib::page_fluid(
   titlePanel("MER Quality Analysis"),
   sidebarLayout(
     sidebarPanel(
@@ -19,6 +19,7 @@ ui <- fluidPage(
       downloadButton("download", "Download CSV of responses")
     ),
     mainPanel(
+      bslib::input_dark_mode(),
       htmlOutput("heading"),
       textOutput("prompt"),
       uiOutput("ui")
@@ -66,26 +67,26 @@ server <- function(input, output, session) {
     # dropdown for selecting dataset
     if (this_prompt() %in% ind_dfs) {
       tagList(
-        textInput("rater", "Please enter your initials"),
         selectInput(
           "df", 
-          "Select a dataset", 
+          "", 
           choices = datasets
-        )
+        ),
+        textInput("rater", "Please enter your initials"),
       )
       # likert-type rating scale for rating measurements, along with text
     } else if (this_prompt() %in% ind_rating) {
       tagList(
-        textAreaInput("response", "Respond here:"),
         radioButtons("rating", "Item rating:",
-                     c("None selected" = NA, "Strongly Disagree" = 1, "Somewhat Disagree" = 2,
-                       "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5),
-                     inline = TRUE)
+           c("None selected" = NA, "Strongly Disagree" = 1, "Somewhat Disagree" = 2,
+             "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5),
+           inline = TRUE),
+        textAreaInput("response", "Comments:")
       )
       # expandable textbox for text-only responses (e.g., datasheet items)
     }  else if (this_prompt() %in% ind_textbox) {
       tagList(
-        textAreaInput("response", "Your Response"),
+        textAreaInput("response", "Respond here:"),
       )
       # small textbox for tracking initials of rater.
     }  else if (this_prompt() %in% ind_rater) {
