@@ -27,10 +27,14 @@ output: html_document
 - Contextual Data Quality relates to the extent to which data are pertinent to the task of the data user; this includes dimensions such as relevance, timeliness, completeness and appropriateness. An essential question that is considered here is the extent to which the sample of cases contained in the dataset diverges from the true distribution of cases that are likely to be encountered when the ML model is deployed. Possible sources of divergence may include historical time or geographic representation.
 - Representational Data Quality refers to the extent to which data are presented in an intelligible and clear manner, including requirements such as being interpretable, easy to understand, and represented concisely and consistently. In practical terms, these qualities can be implemented through practices such as standardisation and documentation. Standardisation refers to conventions for capturing information in a consistent manner, including machine-readable data structures and formats for capturing specific attributes (e.g., date, location, measurement error). This helps engineers to ingest datasets from multiple sources and build interoperable solutions. Documentation about the dataset provides an additional layer of descriptive information to support the creation of ML applications.
 - Accessibility Data Quality refers to the extent to which data are available, obtainable and secure. The rise of big data and ML applications in recent decades has been accompanied by calls for publishing datasets in an open manner, as well as secure access mechanisms for restricted datasets, so that their value can be realised. For ML stakeholders who work with personal or commercially sensitive data, advances in the accessibility of data have been tempered by security and legal precautions (e.g., compliance with GDPR and intellectual property rights).
+- We will use the following definitions for concepts related to data quality.
+- A Trusted Digital Repository aims to provide reliable and long-term accessibility to digital resources to its target community (OCLC, 2002, p. 5).
+- In the context of this questionnaire, documentation pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page. 
+- Precalculated features refers to features that were analyzed prior to data modelling.
 
 ### Datasheet
 
-#### Motivation
+#### Motivation & Additional Information
 
 -   For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.
 -   Who created this dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?
@@ -39,6 +43,10 @@ output: html_document
 -   What is the stimulus length (median)?
 -   What is the number of annotators (if raw data given)? 
 -   What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
+-   Is test data publicly available?
+-   Does the study use direct or indirect annotation methods? Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.
+-   What annotation framework is used? (affective circumplex, affect quadrants, basic emotions, aesthetic emotions, other).
+-   Have the authors applied baseline models to this dataset?
 
 ### Intrinsic
 
@@ -47,18 +55,17 @@ output: html_document
 -   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students)
 -   Reliability of annotations is adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
 -   The estimated cost of establishing the dataset is reported.
--   The value of the data significant in terms of the cost invested (e.g. over \$5000) or culture-specific expertise.
+-   The value of the data significant in terms of the cost invested (e.g. over $5000) or culture-specific expertise.
 
 #### Collection
 
--   Accuracy can be improved by user-centered approaches for data labeling and augmentation. Examples include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.
+-   Accuracy is improved by user-centered approaches for data labeling and augmentation. Examples include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.
 -   (If applicable) Study provides information about screening and training of annotators.
 
 #### Cleaning & preprocessing
 
 -   Data entries are unique and redundant cases are removed.
--   Feature complexity is reduced where appropriate to mitigate overfitting or to improve interpretability
--   Does the study use direct or indirect annotation methods? Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.
+-   Feature complexity is reduced where appropriate to mitigate overfitting or to improve interpretability.
 
 #### ML building
 
@@ -66,7 +73,7 @@ output: html_document
 
 #### Deployment
 
--   Validity of data can be ensured through adherence to existing theory, and by checking for representational drift.
+-   Validity of data is ensured through adherence to existing theory, and by checking for representational drift.
 
 ### Contextual
 
@@ -90,43 +97,42 @@ output: html_document
 
 #### Maintenance
 
--   Contextually biased data can be addressed using curation, including infrastructure, tools and practices for maintaining nonstatic datasets that grow over time. Examples include a human-centered approach to data collection (e.g., game-ification, retention incentives), a controlled approach to data collection (e.g., consistency in the number of annotators per song), or version control tracking changes to the data.
+-   Contextually biased data is addressed using curation, including infrastructure, tools, and practices for maintaining nonstatic datasets that grow over time. Examples include a human-centered approach to data collection (e.g., game-ification, retention incentives), a controlled approach to data collection (e.g., consistency in the number of annotators per song), or version control tracking changes to the data.
 
 #### ML building
 
--   Contextual validity is supported by selecting appropriate features
--   Contextual validity is supported by selecting appropriate emotion taxonomies and constructs
--   Contextual validity is supported by selecting appropriate music stimuli and genres
+-   Contextual validity is supported by selecting appropriate features.
+-   Contextual validity is supported by selecting appropriate emotion taxonomies and constructs.
+-   Contextual validity is supported by selecting appropriate music stimuli and genres.
 
 #### Verification & testing
 
--   Contextual fit of the model is assessed using benchmarked evaluation
--   The authors offer training and test data splits so that evaluation metrics can be verified transparently
+-   Contextual fit of the model is assessed using benchmarked evaluation.
+-   The authors offer training and test data splits so that evaluation metrics can be verified transparently.
 
 ### Representational
 
 #### Use case & design
 
 -   ~~Documentation on user requirements and dataset design are clear and provide the impression of credibility~~
--   Where data domains (annotations, music, lyrics, tags, features) come from is clearly explained
+-   Where data domains (annotations, music, lyrics, tags, features) come from is clearly explained.
 
 #### Collection
 
--   The data collection process is clearly documented (e.g., using datasheets, checklists)
--   Annotation constructs are defined clearly to mitigate inaccuracies in human annotations
--   The annotation scheme adheres to the theory it follows and can it be interpreted by others in the same way
--   What annotation framework is used? (affective circumplex, affect quadrants, basic emotions, aesthetic emotions, other)
+-   The data collection process is clearly documented (e.g., using datasheets, checklists).
+-   Annotation constructs are defined clearly to mitigate inaccuracies in human annotations.
+-   The annotation scheme adheres to the theory it follows and can it be interpreted by others in the same way.
 
 #### Cleaning & preprocessing
 
 -   Publicly available notebooks or scripts (where applicable) are clearly commented.
 -   Data sourced from heterogeneous sources are adequately reformatted, normalised or aggregated.
 -   The response apparatus provides participants with options to differentiate ratings for difficult cases, or to express uncertainty/inapplicability of an emotion label. Possible examples toward this goal include granular rating scales, confidence ratings, free-text responses, or the option to opt out of rating excerpts if uncertain.
--   How data domains (annotations, music, lyrics, tags, features) were processed is clearly documented
+-   How data domains (annotations, music, lyrics, tags, features) were processed is clearly documented.
 
 #### Maintenance
 
--   Clarity of the dataset is supported by user interfaces for dataset exploration
+-   Clarity of the dataset is supported by user interfaces for dataset exploration.
 
 #### ML building
 
@@ -141,33 +147,36 @@ output: html_document
 
 #### Collection
 
--   Research integrity frameworks and procedures for consent, transparency, ethics and privacy are reported
+-   Research integrity frameworks and procedures for consent, transparency, ethics and privacy are reported.
 
 #### Cleaning & preprocessing
 
--   Security of sensitive data is supported by anonymisation (where applicable)
+-   Security of sensitive data is supported by anonymisation (where applicable).
 
 #### Maintenance
 
--   Availability of data is facilitated by infrastructure for timely sharing
--   Identifiability of the correct dataset (out of multiple versions) is guided by version control and DOIs
--   The documentation and instructions (specific wording that the annotators saw) for the annotation task are available
--   The data description is fully covered in the documentation for the amount of data
--   The data description is fully covered in the documentation for the selected genre(s)
--   The data description is fully covered in the documentation for the domains of data
--   The data description is fully covered in the documentation for annotator expertise and culture
--   The data description is fully covered in the documentation for the excerpt duration
--   The data description is fully covered in the documentation for the source where available
+-   Availability of data is facilitated by infrastructure for timely sharing.
+-   Identifiability of the correct dataset (out of multiple versions) is guided by version control and DOIs.
+-   The documentation and instructions (specific wording that the annotators saw) for the annotation task are available.
+-   The data description is fully covered in the documentation for: the amount of data.
+-   The data description is fully covered in the documentation for: the selected genre(s).
+-   The data description is fully covered in the documentation for: the domains of data.
+-   The data description is fully covered in the documentation for: annotator expertise and culture.
+-   The data description is fully covered in the documentation for: the excerpt duration.
+-   The data description is fully covered in the documentation for: the source where available.
 
 #### Verification & testing
 
--   Test data annotations are publicly available
+-   (If applicable) Test data annotations are accessible with reasonable effort.
 -   If parts of the data (music, lyrics, album covers, etc) are copyrighted, pre-calculated features are accessible with reasonable effort.
 
 ### 
 
 #### Debrief
-- Thank you for your time. Further reading: Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. Journal of management information systems, 12(4), 5-33. Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Iii, H. D., & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92.
+- Thank you for your time. 
+- Further reading: Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. Journal of management information systems, 12(4), 5-33. 
+- Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Iii, H. D., & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92.
+- Priestley, M., O’donnell, F., & Simperl, E. (2023). A survey of data quality requirements that matter in ML development pipelines. ACM Journal of Data and Information Quality, 15(2), 1-39.
 
 #### TODO
 
