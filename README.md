@@ -16,7 +16,7 @@ See [analysis-plan.md](content/analysis-plan.md)
 
 
 # Usage
-In general, build and run the container. For Apple Silicon Mac, add `--platform=linux/amd64:
+In general, build and run the container. For Apple Silicon Mac, add `--platform=linux/amd64`:
 ```
 docker build --tag 'mer_test' .
 docker run --rm -p 3838:3838 mer_test
