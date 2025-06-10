@@ -30,7 +30,7 @@ output: html_document
 - We will use the following definitions for concepts related to data quality.
 - A Trusted Digital Repository aims to provide reliable and long-term accessibility to digital resources to its target community (OCLC, 2002, p. 5).
 - In the context of this questionnaire, documentation pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page. 
-- Precalculated features refers to features that were analyzed prior to data modelling.
+- Precalculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.
 
 ### Datasheet
 
@@ -45,8 +45,8 @@ output: html_document
 -   What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
 -   Is test data publicly available?
 -   Does the study use direct or indirect annotation methods? Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.
--   What annotation framework is used? (affective circumplex, affect quadrants, basic emotions, aesthetic emotions, other).
--   Have the authors applied baseline models to this dataset?
+-   What annotation framework(s) is/are used?
+-   The estimated cost of establishing the dataset is reported.
 
 ### Intrinsic
 
@@ -54,8 +54,8 @@ output: html_document
 
 -   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students)
 -   Reliability of annotations is adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
--   The estimated cost of establishing the dataset is reported.
--   The value of the data significant in terms of the cost invested (e.g. over $5000) or culture-specific expertise.
+-   If reported, how much did the dataset cost to prepare?
+-   The dataset contributes unique insight into cultural differences in MER.
 
 #### Collection
 
@@ -176,7 +176,8 @@ output: html_document
 - Thank you for your time. 
 - Further reading: Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. Journal of management information systems, 12(4), 5-33. 
 - Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Iii, H. D., & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92.
-- Priestley, M., O’donnell, F., & Simperl, E. (2023). A survey of data quality requirements that matter in ML development pipelines. ACM Journal of Data and Information Quality, 15(2), 1-39.
+- Priestley, M., O’donnell, F., & Simperl, E. (2023). A survey of data quality requirements that matter in ML development pipelines. ACM Journal of Data and Information Quality, 15(2), 1-39
+- You may now close this screen.
 
 #### TODO
 

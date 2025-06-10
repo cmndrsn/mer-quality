@@ -55,3 +55,33 @@ ind_rating <- which(survey_items$dimension %in%
                         "Accessibility"
                       )
 )
+
+
+# define forced-choice questions
+ind_fc <- which(
+  stringr::str_detect(
+    survey_items$prompt,
+    "Is test data publicly available?|Does the study use direct or indirect annotation methods?|baseline models|estimated cost"
+  )
+)
+# define forced choice questions with multiple response options
+ind_mc <- which(
+  stringr::str_detect(
+    survey_items$prompt,
+    "What annotation framework"
+  )
+)
+
+# remove from existing textbox items
+ind_textbox <- ind_textbox[!ind_textbox %in% c(ind_fc, ind_mc)]
+
+ind_fc_options <- list(
+  '20' = c("Yes", "No"), 
+  '21' = c("Direct", "Indirect"),
+  '23' = c("Yes", "No")
+)
+
+ ind_mc_options <- list(
+   '22' = c("Affective Circumplex", "Affect Quadrants", "Basic Emotions", "Aesthetic Emotions", "Other")
+ )
+

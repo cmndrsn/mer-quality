@@ -6,6 +6,10 @@ library(shiny)
 
 source(here::here("scripts/preprocessing.R"))
 
+# session id
+
+session_id <- Sys.time()
+
 # create ui
 
 ui <- bslib::page_fluid(
@@ -39,6 +43,7 @@ server <- function(input, output, session) {
       rating = numeric(),
       rater = character(),
       dataset = character(),
+      prompt_number = character(),
       stringsAsFactors = FALSE
     )
   )
@@ -81,17 +86,34 @@ server <- function(input, output, session) {
            c("None selected" = NA, "Strongly Disagree" = 1, "Somewhat Disagree" = 2,
              "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5),
            inline = TRUE),
-        textAreaInput("response", "Comments:")
+        textAreaInput("response", "Comments:", width = '300%', height = '1000%')
       )
       # expandable textbox for text-only responses (e.g., datasheet items)
     }  else if (this_prompt() %in% ind_textbox) {
       tagList(
-        textAreaInput("response", "Respond here:"),
+        textAreaInput("response", "Respond here:", width = '300%', height = '1000%'),
       )
       # small textbox for tracking initials of rater.
     }  else if (this_prompt() %in% ind_rater) {
       tagList(
         
+      )
+    } else if (this_prompt() %in% ind_fc) {
+      tagList(
+        selectizeInput(
+          "response",
+          label = "Respond here:",
+          choices = ind_fc_options[[as.character(this_prompt())]]
+        )
+      )
+    } else if (this_prompt() %in% ind_mc) {
+      tagList(
+        checkboxGroupInput(
+          "response",
+          label = "Respond here:",
+          choices = ind_mc_options[[as.character(this_prompt())]],
+          inline = TRUE
+        )
       )
     } 
   })
@@ -105,8 +127,8 @@ server <- function(input, output, session) {
             prompt = prompt[this_prompt()],
             # store response if question has textbox
             response = ifelse(
-              this_prompt() %in% c(ind_textbox, ind_rating), 
-              input$response, 
+              this_prompt() %in% c(ind_textbox, ind_rating, ind_fc, ind_mc), 
+              paste(input$response, collapse = ","),
               ''
             ),
             # store rating if question has rating scale
@@ -117,11 +139,23 @@ server <- function(input, output, session) {
             ),
             # store 
             dataset = input$df,
-            rater =  input$rater
+            rater =  input$rater,
+            prompt_number = this_prompt()
       ))
+      write.csv(
+        responses$data,
+        file = paste0(
+          'eval/',
+          unique(input$rater), '_', 
+          unique(input$df), '_', session_id, '.csv') |>
+          tolower(),
+        row.names = FALSE,
+      )
       # clear input between questions
       updateTextInput(session, "response", value = "") 
       updateRadioButtons(session, "rating", selected = NA)  
+      updateCheckboxGroupInput(session, "response", selected = NA) 
+      updateSelectizeInput(session, "response", selected = NA)
     if (this_prompt() < length(prompt)) {
       this_prompt(this_prompt() + 1)
     }
@@ -140,7 +174,7 @@ server <- function(input, output, session) {
       paste0(
         'merquality_',
         unique(input$rater), '_', 
-        unique(input$df), '_', Sys.Date(), '.csv') |>
+        unique(input$df), '_', session_id, '.csv') |>
         tolower()
     },
     content = function(file) {
