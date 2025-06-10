@@ -33,6 +33,7 @@ RUN R -e "renv::restore()"
 RUN mkdir -p lib
 RUN mkdir -p content
 RUN mkdir -p scripts
+RUN mkdir -p eval
 COPY lib/progress-bar.R lib/progress-bar.R
 COPY lib/survey-items-df.R lib/survey-items-df.R
 COPY lib/get-datasets.R lib/get-datasets.R
