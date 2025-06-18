@@ -1,5 +1,7 @@
 # load libraries
 
+
+
 library(shiny)
 
 # source preprocessing script
@@ -8,7 +10,7 @@ source(here::here("scripts/preprocessing.R"))
 
 # session id
 
-session_id <- Sys.time()
+session_id <- paste0(sample(c(letters, 0:9), 15, replace = TRUE), collapse = "")
 
 # create ui
 
@@ -85,25 +87,58 @@ server <- function(input, output, session) {
         radioButtons("rating", "Item rating:",
            c("None selected" = NA, "Strongly Disagree" = 1, "Somewhat Disagree" = 2,
              "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5),
+           # this code is very verbose...
+           selected = ifelse( # if no value was previously selected:
+             is.null(tail(responses$data$rating[responses$data$prompt_number == this_prompt()], 1)),
+             NA,  # then select NA (corresponding to "none selected" option)
+             tail( #otherwise, select previously selected value *IF* not blank.
+             responses$data$rating[
+               responses$data$prompt_number == this_prompt()][
+                 responses$data$rating[
+                   responses$data$prompt_number == this_prompt()] != ""], 
+             n = 1)
+           ),
            inline = TRUE),
-        textAreaInput("response", "Comments:", width = '300%', height = '1000%')
+        textAreaInput(
+          "response",
+          this_prompt(), 
+          "Comments:", 
+          width = '300%', 
+          height = '1000%',
+          value = tail(
+            responses$data$response[responses$data$response != "" & 
+                                      responses$data$prompt_number == this_prompt()], 
+            n = 1)
+          )
       )
       # expandable textbox for text-only responses (e.g., datasheet items)
     }  else if (this_prompt() %in% ind_textbox) {
       tagList(
-        textAreaInput("response", "Respond here:", width = '300%', height = '1000%'),
+        textAreaInput(
+          "response", 
+          this_prompt(), 
+          width = '300%', 
+          height = '1000%',
+          value = tail(
+            responses$data$response[responses$data$response != "" & 
+                                      responses$data$prompt_number == this_prompt()], 
+            n = 1)
+        ),
       )
       # small textbox for tracking initials of rater.
     }  else if (this_prompt() %in% ind_rater) {
       tagList(
-        
       )
     } else if (this_prompt() %in% ind_fc) {
       tagList(
-        selectizeInput(
+        selectInput(
           "response",
           label = "Respond here:",
-          choices = ind_fc_options[[as.character(this_prompt())]]
+          choices = ind_fc_options[[as.character(this_prompt())]],
+          selected = tail(
+            responses$data$response[responses$data$response != "" & 
+                                      responses$data$prompt_number == this_prompt()], 
+            n = 1)
         )
       )
     } else if (this_prompt() %in% ind_mc) {
@@ -112,7 +147,8 @@ server <- function(input, output, session) {
           "response",
           label = "Respond here:",
           choices = ind_mc_options[[as.character(this_prompt())]],
-          inline = TRUE
+          inline = TRUE,
+          selected = NA
         )
       )
     } 
@@ -152,10 +188,10 @@ server <- function(input, output, session) {
         row.names = FALSE,
       )
       # clear input between questions
-      updateTextInput(session, "response", value = "") 
-      updateRadioButtons(session, "rating", selected = NA)  
-      updateCheckboxGroupInput(session, "response", selected = NA) 
-      updateSelectizeInput(session, "response", selected = NA)
+     # updateTextInput(session, "response", value = "") 
+     # updateRadioButtons(session, "rating", selected = NA)  
+    #  updateCheckboxGroupInput(session, "response", selected = NA) 
+    #  updateSelectizeInput(session, "response", selected = NA)
     if (this_prompt() < length(prompt)) {
       this_prompt(this_prompt() + 1)
     }
@@ -163,6 +199,37 @@ server <- function(input, output, session) {
   
   # previous question
   observeEvent(input[["previous"]], {
+    responses$data <- rbind(
+      responses$data, 
+      data.frame(
+        # store prompt
+        prompt = prompt[this_prompt()],
+        # store response if question has textbox
+        response = ifelse(
+          this_prompt() %in% c(ind_textbox, ind_rating, ind_fc, ind_mc), 
+          paste(input$response, collapse = ","),
+          ''
+        ),
+        # store rating if question has rating scale
+        rating = ifelse(
+          this_prompt() %in% ind_rating, 
+          input$rating, 
+          ''
+        ),
+        # store 
+        dataset = input$df,
+        rater =  input$rater,
+        prompt_number = this_prompt()
+      ))
+    write.csv(
+      responses$data,
+      file = paste0(
+        'eval/',
+        unique(input$rater), '_', 
+        unique(input$df), '_', session_id, '.csv') |>
+        tolower(),
+      row.names = FALSE,
+    )
     if (this_prompt() > 1) {
       this_prompt(this_prompt() - 1)
     }
