@@ -1,5 +1,5 @@
 
-generate_defs <- function(text_string, lookup_dictionary) {
+generate_defs <- function(text_string, lookup_dictionary, blank_message) {
   label <- ''
   text_string <- tolower(text_string)
   key_terms <- stringr::str_extract_all(
@@ -15,5 +15,6 @@ generate_defs <- function(text_string, lookup_dictionary) {
       '\n\n'
     )
   }
-  return(label)
+  if(label == '') return(blank_message)
+  else return(label)
 }

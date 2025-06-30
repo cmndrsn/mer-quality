@@ -76,13 +76,13 @@ ind_mc <- which(
 ind_textbox <- ind_textbox[!ind_textbox %in% c(ind_fc, ind_mc)]
 
 ind_fc_options <- list(
-  '12' = c("Yes", "No"), 
-  '13' = c("Direct", "Indirect"),
-  '15' = c("Yes", "No")
+  '7' = c("Yes", "No"), 
+  '8' = c("Direct", "Indirect"),
+  '10' = c("Yes", "No")
 )
 
  ind_mc_options <- list(
-   '14' = c("Affective Circumplex", "Affect Quadrants", "Basic Emotions", "Aesthetic Emotions", "Other")
+   '9' = c("Affective Circumplex", "Affect Quadrants", "Basic Emotions", "Aesthetic Emotions", "Other")
  )
 
 # definitions for tooltips
@@ -98,7 +98,9 @@ ind_fc_options <- list(
    'contextually biased' = "Contextual bias refers to a situation when a model's performance hinges on specific contextual features related to the prediction task. For example, an algorithm designed to predict emotion annotations in different kinds of music would contain bias if it was only trained on one genre.",
    'test data' = "For the purpose of this evaluation, we will consider test data an annotated dataset upon which regression/classification can be performed",
    domain = "Data domains refer to distinct data sources relevant for the MER task, such as direct/indirect annotations, metadata, analyzed features, physiological data, etc.",
-   'direct or indirect' = "Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments."
+   'direct or indirect' = "Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.",
+   'emotion taxonomies' = "Emotion taxonomies refer to the construct definition used to collection emotion annotations. Examples include Russell's circumplex model, Kivy's basic emotions, emotionality ratings, and other variants.",
+   coverage = "Coverage refers to the degree to which the data account for all potential cases that are relevant for the accurate performance of the system."
  )
 
 definitions_dq <- list(

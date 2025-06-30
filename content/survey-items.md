@@ -25,11 +25,6 @@ output: html_document
 
 #### Motivation & Additional Information
 
--   For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.
--   Who created this dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?
--   What support was needed to make this dataset? (e.g. who funded the creation of the dataset? If there is an associated grant, provide the name of the grantor and the grant name and number, or if it was supported by a company or government agency, give those details.)
--   What is the stimulus N?
--   What is the stimulus length (median)?
 -   What is the number of annotators (if raw data given)? 
 -   What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
 -   Is test data publicly available?
@@ -81,7 +76,7 @@ output: html_document
 
 #### Cleaning & preprocessing
 
--   If the dataset contains contextual biases, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. For example, they study might validate their findings through real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
+-   If the dataset contains contextual biases, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. For example, the study might validate their findings through real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
 -   Data classes are adequately represented and convincingly measure how well the dataset fits the real-world problem.
 
 #### Maintenance
@@ -90,9 +85,9 @@ output: html_document
 
 #### ML building
 
--   Contextual validity is supported by selecting appropriate features.
--   Contextual validity is supported by selecting appropriate emotion taxonomies and constructs.
--   Contextual validity is supported by selecting appropriate music stimuli and genres.
+-   The selected audio features are contextually valid.
+-   The emotion taxonomies and constructs are contextually valid.
+-   The music stimuli and genres are contextually valid.
 
 #### Verification & testing
 
@@ -147,12 +142,12 @@ output: html_document
 -   Availability of data is facilitated by infrastructure for timely sharing.
 -   Identifiability of the correct dataset (out of multiple versions) is guided by version control and DOIs.
 -   The documentation and instructions (specific wording that the annotators saw) for the annotation task are available.
--   The data description is fully covered in the documentation for: the amount of data.
--   The data description is fully covered in the documentation for: the selected genre(s).
--   The data description is fully covered in the documentation for: the domains of data.
--   The data description is fully covered in the documentation for: annotator expertise and culture.
--   The data description is fully covered in the documentation for: the excerpt duration.
--   The data description is fully covered in the documentation for: the source where available.
+-   The documentation unambiguously identifies the shape and size of data.
+-   The documentation unambiguously outlines the music genre(s) used for MER.
+-   The documentation unambiguously outlines the data domains included.
+-   The documentation unambiguously outlines annotator expertise and culture.
+-   The documentation unambiguously outlines the excerpt duration.
+-   The documentation unambiguously outlines the source where the open-access data are available.
 
 #### Verification & testing
 
@@ -163,7 +158,7 @@ output: html_document
 
 #### Review
 - Please click next without editing this page. You will be able to revise your responses on the next page.
-- Here you can review and edit your responses. Make sure you click "next" once you are finished to ensure your responses save. Updates will be recorded automatically.
+- Here you can review and edit your responses. Make sure you click "next" once you are finished to ensure your responses save. Updates will be recorded automatically. IMPORTANT: if you responded to an item multiple times, please only edit the row containing your latest response.
 - Thank you for your time. You may now close this tab, or make additional changes and click next.
 
 #### TODO

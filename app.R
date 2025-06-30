@@ -51,20 +51,23 @@ ui <- bslib::page_fluid(
 
 server <- function(input, output, session) {
   
+  
   # track prompt index
   this_prompt <- reactiveVal(1)
   
   output$additional_info <- renderText({
     label <- generate_defs(
       paste(prompt[this_prompt()]),
-      definitions
+      definitions,
+      ""
     )
     return(label)
   })
   output$dq_defs <- renderText({
       label <- generate_defs(
         paste(heading[this_prompt()]),
-        definitions_dq
+        definitions_dq,
+        "There is nothing to display for this page."
       )
     return(label)
   })
@@ -77,6 +80,7 @@ server <- function(input, output, session) {
       rater = character(),
       dataset = character(),
       prompt_number = character(),
+      timestamp = character(),
       stringsAsFactors = FALSE
     )
   )
@@ -186,9 +190,9 @@ server <- function(input, output, session) {
         width = "0%", height = "0%",
         outputId = "editable_table",
         expr = datatable(
-          responses$data |>
-            dplyr::group_by(dataset, rater, prompt_number, prompt) |>
-            dplyr::summarize(rating = dplyr::last(rating), response = dplyr::last(response)),
+          responses$data, #|>
+          #  dplyr::group_by(dataset, rater, prompt_number, prompt) |>
+           # dplyr::summarize(rating = dplyr::last(rating), response = dplyr::last(response)),
           editable = TRUE
         )
       )
@@ -233,7 +237,8 @@ server <- function(input, output, session) {
           # store 
           dataset = input$df,
           rater =  input$rater,
-          prompt_number = this_prompt()
+          prompt_number = this_prompt(),
+          timestamp = date()
         ))
     }
       write.csv(
@@ -273,7 +278,8 @@ server <- function(input, output, session) {
         # store 
         dataset = input$df,
         rater =  input$rater,
-        prompt_number = this_prompt()
+        prompt_number = this_prompt(),
+        timestamp = date()
       ))
     write.csv(
       responses$data,
