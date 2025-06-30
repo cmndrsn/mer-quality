@@ -19,18 +19,7 @@ output: html_document
 
 - In this interactive module, you will be asked to annotate and evaluate the quality of open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from two highly influential papers in the Data Quality literature by  Priestley et al. (2023) and Gebru et al. (2019), either adapting or directly adopting questions in an effort to improve documentation surrounding MER datasets.
 - In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019). In a second stage, you will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
-
-#### Definitions
-
 - You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ.
-- Intrisic Data Quality has traditionally been understood to reflect the extent to which data values conform to the actual or true values; this includes specific requirements such as accuracy, provenance and cleanliness, the latter of which covers practices such as the addressing missing values and redundant cases. Besides the usual data qualities needed for statistical analysis (e.g., addressing missing data, anomalies), an intrinsic quality that is increasingly valued by ML practitioners and regulators relates to data lineage and traceability.
-- Contextual Data Quality relates to the extent to which data are pertinent to the task of the data user; this includes dimensions such as relevance, timeliness, completeness and appropriateness. An essential question that is considered here is the extent to which the sample of cases contained in the dataset diverges from the true distribution of cases that are likely to be encountered when the ML model is deployed. Possible sources of divergence may include historical time or geographic representation.
-- Representational Data Quality refers to the extent to which data are presented in an intelligible and clear manner, including requirements such as being interpretable, easy to understand, and represented concisely and consistently. In practical terms, these qualities can be implemented through practices such as standardisation and documentation. Standardisation refers to conventions for capturing information in a consistent manner, including machine-readable data structures and formats for capturing specific attributes (e.g., date, location, measurement error). This helps engineers to ingest datasets from multiple sources and build interoperable solutions. Documentation about the dataset provides an additional layer of descriptive information to support the creation of ML applications.
-- Accessibility Data Quality refers to the extent to which data are available, obtainable and secure. The rise of big data and ML applications in recent decades has been accompanied by calls for publishing datasets in an open manner, as well as secure access mechanisms for restricted datasets, so that their value can be realised. For ML stakeholders who work with personal or commercially sensitive data, advances in the accessibility of data have been tempered by security and legal precautions (e.g., compliance with GDPR and intellectual property rights).
-- We will use the following definitions for concepts related to data quality.
-- A Trusted Digital Repository aims to provide reliable and long-term accessibility to digital resources to its target community (OCLC, 2002, p. 5).
-- In the context of this questionnaire, documentation pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page. 
-- Precalculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.
 
 ### Datasheet
 
@@ -44,7 +33,7 @@ output: html_document
 -   What is the number of annotators (if raw data given)? 
 -   What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
 -   Is test data publicly available?
--   Does the study use direct or indirect annotation methods? Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.
+-   Does the study use direct or indirect annotation methods? 
 -   What annotation framework(s) is/are used?
 -   The estimated cost of establishing the dataset is reported.
 
@@ -59,7 +48,7 @@ output: html_document
 
 #### Collection
 
--   Accuracy is improved by user-centered approaches for data labeling and augmentation. Examples include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.
+-   Accuracy is improved by user-centered approaches for data labeling/augmentation. 
 -   (If applicable) Study provides information about screening and training of annotators.
 
 #### Cleaning & preprocessing
@@ -69,7 +58,7 @@ output: html_document
 
 #### ML building
 
--   Completeness of data is improved by enrichment. Enrichment examples include demographic data, free-text annotations, mood-control items, musical sophistication measurements.
+-   Completeness of data is improved by enrichment.
 
 #### Deployment
 
@@ -92,12 +81,12 @@ output: html_document
 
 #### Cleaning & preprocessing
 
--   If the dataset contains contextual biases, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. Examples include real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
+-   If the dataset contains contextual biases, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. For example, they study might validate their findings through real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
 -   Data classes are adequately represented and convincingly measure how well the dataset fits the real-world problem.
 
 #### Maintenance
 
--   Contextually biased data is addressed using curation, including infrastructure, tools, and practices for maintaining nonstatic datasets that grow over time. Examples include a human-centered approach to data collection (e.g., game-ification, retention incentives), a controlled approach to data collection (e.g., consistency in the number of annotators per song), or version control tracking changes to the data.
+-   Contextually biased data is addressed using curation, including infrastructure, tools, and practices for maintaining nonstatic datasets that grow over time. Examples include a user-centered approach to data collection (e.g., game-ification, retention incentives), a controlled approach to data collection (e.g., consistency in the number of annotators per song), or version control tracking changes to the data.
 
 #### ML building
 
@@ -168,16 +157,14 @@ output: html_document
 #### Verification & testing
 
 -   (If applicable) Test data annotations are accessible with reasonable effort.
--   If parts of the data (music, lyrics, album covers, etc) are copyrighted, pre-calculated features are accessible with reasonable effort.
+-   If parts of the data (music, lyrics, album covers, etc) are copyrighted, precalculated features are accessible with reasonable effort.
 
 ### 
 
-#### Debrief
-- Thank you for your time. 
-- Further reading: Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to data consumers. Journal of management information systems, 12(4), 5-33. 
-- Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Iii, H. D., & Crawford, K. (2021). Datasheets for datasets. Communications of the ACM, 64(12), 86-92.
-- Priestley, M., O’donnell, F., & Simperl, E. (2023). A survey of data quality requirements that matter in ML development pipelines. ACM Journal of Data and Information Quality, 15(2), 1-39
-- You may now close this screen.
+#### Review
+- Please click next without editing this page. You will be able to revise your responses on the next page.
+- Here you can review and edit your responses. Make sure you click "next" once you are finished to ensure your responses save. Updates will be recorded automatically.
+- Thank you for your time. You may now close this tab, or make additional changes and click next.
 
 #### TODO
 
@@ -186,5 +173,5 @@ Define what we mean by documentation (details about trusted repos, etc.)
 Terms:
 - Trusted repository
 - Documentation
-- Pre-calculated features
+- Precalculated features
 - Have baseline models been applied? (bonus Q)?
