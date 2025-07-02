@@ -203,7 +203,6 @@ server <- function(input, output, session) {
   # when user advances in survey, save columns based on response type
   observeEvent(input[["next"]], {
     
-    if(this_prompt() == ind_final) {
     # Observe cell edits and update the reactiveVal
     observeEvent(input$editable_table_cell_edit, {
       info <- input$editable_table_cell_edit
@@ -211,7 +210,6 @@ server <- function(input, output, session) {
       updated[info$row, info$col] <- DT::coerceValue(info$value, updated[info$row, info$col])
       responses$data <- updated
     })
-    } else {
       responses$data <- rbind(
         responses$data, 
         data.frame(
@@ -239,8 +237,9 @@ server <- function(input, output, session) {
           rater =  input$rater,
           prompt_number = this_prompt(),
           timestamp = date()
-        ))
-    }
+        )) |>
+        dplyr::group_by(dataset, rater, prompt_number, prompt) |>
+        dplyr::summarise(rating = dplyr::last(rating), response = dplyr::last(response), timestamp = dplyr::last(timestamp))
       write.csv(
         responses$data,
         file = paste0(
