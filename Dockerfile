@@ -37,9 +37,11 @@ RUN mkdir -p eval
 COPY lib/progress-bar.R lib/progress-bar.R
 COPY lib/survey-items-df.R lib/survey-items-df.R
 COPY lib/get-datasets.R lib/get-datasets.R
+COPY lib/info.R lib/info.R
 COPY content/survey-items.md content/survey-items.md
 COPY content/datasets.md content/datasets.md
 COPY scripts/preprocessing.R scripts/preprocessing.R
+COPY scripts/data-formatting.R scripts/data-formatting.R
 COPY app.R app.R 
 
 EXPOSE 3838

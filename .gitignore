@@ -49,7 +49,9 @@ po/*~
 rsconnect/
 
 # Evaluation folder
-eval/
+# eval/
 
 # Operating-system specific files
 .DS_Store
+
+aws
