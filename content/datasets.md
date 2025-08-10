@@ -19,16 +19,16 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 
 ### Datasets
 
--   [AMG1608](https://github.com/loichan-tw/AMG1608_release) [ ]
--   [CCMED-WCMED](https://github.com/cmndrsn/mer-quality/issues/3#ccmed-wcmed) [ ]
+-   [AMG1608](https://github.com/loichan-tw/AMG1608_release)
+-   [CCMED-WCMED](hhttps://www.metacreation.net/projects/ccmed_wcmed_soundscape) 
 -   [CH818](https://ccmir.cite.hku.hk/data)
 -   [DEAM](https://cvml.unige.ch/databases/DEAM/)
 -   [EMMA](https://osf.io/7ptmd/)
 -   [EMOPIA](https://annahung31.github.io/EMOPIA/)
--   [Emotify](https://github.com/cmndrsn/mer-quality/issues/3#emotify)
+-   [Emotify](https://www.projects.science.uu.nl/memotion/emotifydata/)
 -   [GlobalMood](https://osf.io/8c5f2)
 -   [MERGE](https://arxiv.org/html/2407.06060v1)
--   [Moodo](https://github.com/cmndrsn/mer-quality/issues/3#moodo)
+-   [Moodo](http://mood.musiclab.si/en/dataset)
 -   [MTG-Jamendo](https://multimediaeval.github.io/2019-Emotion-and-Theme-Recognition-in-Music-Task/)
 -   [MUSAV](https://mtg.github.io/musav-dataset/)
 -   [MUSIFEAST-17](https://osf.io/5ebz2/)
@@ -39,7 +39,8 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 -   [RAVDESS](https://zenodo.org/records/1188976)
 -   [Soundtracks](https://osf.io/p6vkg/wiki/home/)
 -   [TROMPA‐MER](https://github.com/juansgomez87/vis-mtg-mer)
--   [VGMIDI](https://github.com/cmndrsn/mer-quality/issues/3#vgmidi)
+-   [VGMIDI](https://github.com/lucasnfe/vgmidi)
+-   [EmoBox (INTERSPEECH)](https://github.com/emo-box/EmoBox)
 
 ## Discarded
 
