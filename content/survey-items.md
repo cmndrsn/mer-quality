@@ -11,26 +11,22 @@ output: html_document
 
 #### Dataset Selection
 
-- Select a dataset.
+-   Select a dataset.
 
-###
+### 
 
 #### Introduction
 
-- In this interactive module, you will be asked to annotate and evaluate the quality of open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from two highly influential papers in the Data Quality literature by  Priestley et al. (2023) and Gebru et al. (2019), either adapting or directly adopting questions in an effort to improve documentation surrounding MER datasets.
-- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019). In a second stage, you will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
-- You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ.
+-   In this interactive module, you will be asked to annotate and evaluate the quality of documentation for open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from guidelines by Priestley et al. (2023) in an effort to improve documentation surrounding MER datasets. 
+~~- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019).~~ 
+- You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
+-   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as proceed and are also viewable at github.com/cmndrsn/mer-quality/issues
+-   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories. 
+~~\### Datasheet~~
 
-### Datasheet
+~~\#### Motivation & Additional Information~~
 
-#### Motivation & Additional Information
-
--   What is the number of annotators (if raw data given)? 
--   What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?
--   Is test data publicly available?
--   Does the study use direct or indirect annotation methods? 
--   What annotation framework(s) is/are used?
--   The estimated cost of establishing the dataset is reported.
+~~- What is the number of annotators (if raw data given)?~~ ~~- What are the data domains (e.g., annotations, audio, lyrics, features, videos, movement, tags, etc.)?~~ ~~- Is test data publicly available?~~ ~~- Does the study use direct or indirect annotation methods?~~ ~~- What annotation framework(s) is/are used?~~ ~~- The estimated cost of establishing the dataset is reported.~~
 
 ### Intrinsic
 
@@ -43,7 +39,7 @@ output: html_document
 
 #### Collection
 
--   Accuracy is improved by user-centered approaches for data labeling/augmentation. 
+-   Accuracy is improved by user-centered approaches for data labeling/augmentation.
 -   (If applicable) Study provides information about screening and training of annotators.
 
 #### Cleaning & preprocessing
@@ -65,7 +61,7 @@ output: html_document
 
 -   The paper provides the impression features were selected in advance of modeling
 -   The strategy for feature selection is clearly justified
--   The strategy for selecting emotion taxonomies and constructs is clearly justified 
+-   The strategy for selecting emotion taxonomies and constructs is clearly justified
 -   The strategy for selecting music stimuli and genres is clearly justified
 -   The strategy for sampling participants and relevant information (e.g., gender, culture, expertise) is clearly justified
 -   The background of annotators is relevant to the music selection and task design.
@@ -152,21 +148,18 @@ output: html_document
 #### Verification & testing
 
 -   (If applicable) Test data annotations are accessible with reasonable effort.
--   If parts of the data (music, lyrics, album covers, etc) are copyrighted, precalculated features are accessible with reasonable effort.
+-   If parts of the data (music, lyrics, album covers, etc) are copyrighted, pre-calculated features are accessible with reasonable effort.
 
 ### 
 
 #### Review
-- Please click next without editing this page. You will be able to revise your responses on the next page.
-- Here you can review and edit your responses. Make sure you click "next" once you are finished to ensure your responses save. Updates will be recorded automatically. IMPORTANT: if you responded to an item multiple times, please only edit the row containing your latest response.
-- Thank you for your time. You may now close this tab, or make additional changes and click next.
+
+-   Please click next without editing this page. You will be able to revise your responses on the next page.
+-   Here you can review and edit your responses. Make sure you click "next" once you are finished to ensure your responses save. Updates will be recorded automatically. IMPORTANT: if you responded to an item multiple times, please only edit the row containing your latest response.
+-   Thank you for your time. You may now close this tab, or make additional changes and click next.
 
 #### TODO
 
 Define what we mean by documentation (details about trusted repos, etc.)
 
-Terms:
-- Trusted repository
-- Documentation
-- Precalculated features
-- Have baseline models been applied? (bonus Q)?
+Terms: - Trusted repository - Documentation - Precalculated features - Have baseline models been applied? (bonus Q)?
