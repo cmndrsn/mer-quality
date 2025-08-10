@@ -88,15 +88,15 @@ ind_fc_options <- list(
 # definitions for tooltips
  
  definitions <- list(
-   trusted = "A Trusted Digital Repository aims to provide reliable and long-term accessibility to digital resources to its target community (OCLC, 2002, p. 5).",
+   trusted = "A Trusted Digital Repository aims to provide reliable and long-term accessibility to digital resources to its target community (OCLC, 2002, p. 5). Examples of trusted repositories include the Open Science Framework and Zenodo.",
    documentation = "For the purpose of this questionnaire, the term 'documentation' pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page.",
-   precalculated = "Precalculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.",
+   'pre-calculated' = "Pre-calculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.",
    'user-centered' = "Examples of user-centered approaches include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.",
    enrichment = "Enrichment examples include demographic data, free-text annotations, mood-control items, musical sophistication measurements.",
-   drift = "Conceptual drift occurs when the statistical relationships between input data and target values change unpreditably over time (Computer Networks, 2022).",
+   drift = "Conceptual drift occurs when the statistical relationships between input data and target values change unpreditably over time (Computer Networks, 2022). drift is an evolution of data that invalidates the data model. It happens when the statistical properties of the target variable, which the model is trying to predict, change over time in unforeseen ways.",
    'contextual bias' = "Contextual bias refers to a situation when a model's performance hinges on specific contextual features related to the prediction task. For example, an algorithm designed to predict emotion annotations in different kinds of music would contain bias if it was only trained on one genre.",
    'contextually biased' = "Contextual bias refers to a situation when a model's performance hinges on specific contextual features related to the prediction task. For example, an algorithm designed to predict emotion annotations in different kinds of music would contain bias if it was only trained on one genre.",
-   'test data' = "For the purpose of this evaluation, we will consider test data an annotated dataset upon which regression/classification can be performed",
+   'test data' = "Test data is a split that has been made by the dataset creators so that there is no data leakage between training and testing.",
    domain = "Data domains refer to distinct data sources relevant for the MER task, such as direct/indirect annotations, metadata, analyzed features, physiological data, etc.",
    'direct or indirect' = "Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.",
    'emotion taxonomies' = "Emotion taxonomies refer to the construct definition used to collection emotion annotations. Examples include Russell's circumplex model, Kivy's basic emotions, emotionality ratings, and other variants.",
