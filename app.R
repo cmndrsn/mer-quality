@@ -9,9 +9,10 @@ library(DT)
 
 source(here::here("scripts/preprocessing.R"))
 
-# session id
+# create session id based on current date
 
-session_id <- paste0(sample(c(letters, 0:9), 15, replace = TRUE), collapse = "")
+session_id <- lubridate::now(tzone = "UCT")
+session_id <- format(session_id, "%Y-%m-%d-%H-%M-%S")
 
 # create ui
 
@@ -82,7 +83,7 @@ server <- function(input, output, session) {
       prompt_number = character(),
       timestamp = character(),
       stringsAsFactors = FALSE
-    )
+    ) 
   )
   
   # render heading
