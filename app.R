@@ -11,8 +11,7 @@ source(here::here("scripts/preprocessing.R"))
 
 # create session id based on current date
 
-session_id <- lubridate::now(tzone = "UCT")
-session_id <- format(session_id, "%Y-%m-%d-%H-%M-%S")
+session_id <- format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
 
 # create ui
 
@@ -237,7 +236,7 @@ server <- function(input, output, session) {
           dataset = input$df,
           rater =  input$rater,
           prompt_number = this_prompt(),
-          timestamp = date()
+          timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
         )) |>
         dplyr::group_by(dataset, rater, prompt_number, prompt) |>
         dplyr::summarise(rating = dplyr::last(rating), response = dplyr::last(response), timestamp = dplyr::last(timestamp))
@@ -246,7 +245,7 @@ server <- function(input, output, session) {
         file = paste0(
           'eval/',
           unique(input$rater), '_', 
-          unique(input$df), '_', session_id, '.csv') |>
+          unique(input$df), '_', dplyr::first(responses$data$timestamp), '.csv') |>
           tolower(),
         row.names = FALSE,
       )
@@ -279,14 +278,14 @@ server <- function(input, output, session) {
         dataset = input$df,
         rater =  input$rater,
         prompt_number = this_prompt(),
-        timestamp = date()
+        timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
       ))
     write.csv(
       responses$data,
       file = paste0(
         'eval/',
         unique(input$rater), '_', 
-        unique(input$df), '_', session_id, '.csv') |>
+        unique(input$df), '_', dplyr::first(responses$data$timestamp), '.csv') |>
         tolower(),
       row.names = FALSE,
     )
