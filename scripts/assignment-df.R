@@ -1,3 +1,4 @@
+set.seed(1)
 # Assign each rater 12 unique datasets ----------------------------
 
 raters <- c("CA", "TE", "JGC", "XH", "VA")
@@ -108,13 +109,29 @@ df <- df[order(df$dataset),]
 
 # shuffle names assigned to each dataset
 
+
+{
 df <- df |>
   dplyr::group_by(dataset) |>
-  dplyr::mutate(rater = sample(rater))
+  dplyr::mutate(rater = sample(rater),
+                tiebreaker = sample(c(TRUE, FALSE, FALSE)))
 
-# now assign tie-breaking assignments
-
-df$tiebreaker <- rep(c(FALSE, FALSE, TRUE), times = 21) |>
-  sample()
+# print dataframe
 
 knitr::kable(df |> dplyr::select(dataset, rater, tiebreaker))
+
+# summarize tiebreaker coverage
+
+df |>
+  dplyr::group_by(rater) |> 
+  dplyr::summarize(n_tiebreaker = sum(tiebreaker)) |> 
+  knitr::kable()
+}
+
+# summarize rater coverage
+summary(df$rater)
+
+# summarize dataset coverage
+summary(df$dataset)
+
+df |> knitr::kable()
