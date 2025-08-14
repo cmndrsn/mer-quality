@@ -114,6 +114,7 @@ df <- df |>
 
 # now assign tie-breaking assignments
 
-df$tiebreaker <- c(FALSE, FALSE, TRUE)
+df$tiebreaker <- rep(c(FALSE, FALSE, TRUE), times = 21) |>
+  sample()
 
-View(df)
+knitr::kable(df |> dplyr::select(dataset, rater, tiebreaker))
