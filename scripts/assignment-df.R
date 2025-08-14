@@ -1,23 +1,32 @@
+# Assign each rater 12 unique datasets ----------------------------
+
+raters <- c("CA", "TE", "JGC", "XH", "VA")
+
 assign_dfs <- function(
     n_df = 21,
-    n_rater = 5,
-    n_rater_df = 3 # raters per dataframe
+    n_rater_df = 3, # raters per dataframe
+    seed = 1
 ) {
+  set.seed(seed)
+  n_rater <- length(raters)
+  # store the number of datasets each rater must evalaute
   n_df_rater <- floor((n_df*n_rater_df)/n_rater) # dataframes per rater
+
+  # create empty list to store dataset assignments
+  rating_list <- list()
+  
   message("Each rater evaluates ", n_df_rater, " datasets")
   # represent each dataset 3 times
   assignments <- rep(LETTERS[1:n_df], each = n_rater_df)
   # identify each assignment uniquely
   assignments <- paste0(assignments, 1:n_rater_df)
-  # define raters
-  raters <- paste0("R", 1:n_rater)
-  # create empty list to store dataset assignments
-  rating_list <- list()
+
   # loop through raters
   for(this_rater in raters) {
     # assign 12 dataset evaluations
     rating_list[[this_rater]] <- sample(assignments, n_df_rater)
     # make sure each rater doesn't get the same dataset twice
+    # if they do, keep resampling until they don't
     while(
       !all(
         summary(
@@ -40,21 +49,71 @@ assign_dfs <- function(
   return(rating_list)
 }
 
-tmp <- assign_dfs()
+df <- assign_dfs()
 
 # return results as data frame
-tmp <- data.frame(
-  rater = rep(1:5, each = 12),
-  df = unlist(tmp)
-)
+df <- data.frame(
+  dataset = unlist(df)
+) |>
+  tibble::rownames_to_column('rater') 
+# remove digits from rater column
+df$rater <- df$rater |> 
+  stringr::str_remove(pattern = "\\d+") |>
+  as.factor()
+
+# replace placeholder letters with names of datasets
 
 source('lib/get-datasets.R')
 
-tmp$df <- factor(tmp$df)
-levels(tmp$df) <- mer_data
+df$dataset <- factor(df$dataset)
+levels(df$dataset) <- mer_data
+
+
+# Assign underrepresented datasets --------------------------------
+
+# get under-represented datasets
+unassigned <- levels(df$dataset)[summary(df$dataset) < 3]
+unassigned <- unassigned[unassigned != "EmoBox (INTERSPEECH)"]
+
+# populate empty list to assign remaining datasets
+assignment_list <- list()
+
+
+# loop through remaining datasets that need to be assigned
+for(unassigned_df in unassigned) {
+  # sample a rater
+  new_rater <- sample(raters, 1)
+  # keep resampling until we find a rater who hasn't already been
+  # assigned to this dataset
+  while(new_rater %in% df[df$dataset == unassigned_df,]$rater) {
+    new_rater <- sample(raters, 1)
+  }
+  new_assignment <- data.frame(rater = new_rater, dataset = unassigned_df)
+  # add new assignment to the list of assignments
+  assignment_list[[unassigned_df]] <- new_assignment
+}
+
+# format newly-assigned datasets
+
+new_assignments <- do.call(rbind, assignment_list)
+
+# add them to the dataset of assignments
+
+df <- rbind(df,
+  new_assignments
+)
 
 # sort by dataframe and assign each rater a role (two raters, one tiebreaker)
-tmp <- tmp[order(tmp$df),]
-tmp$role <- c('r', 'r', 't')
+df <- df[order(df$dataset),]
 
-View(tmp)
+# shuffle names assigned to each dataset
+
+df <- df |>
+  dplyr::group_by(dataset) |>
+  dplyr::mutate(rater = sample(rater))
+
+# now assign tie-breaking assignments
+
+df$tiebreaker <- c(FALSE, FALSE, TRUE)
+
+View(df)
