@@ -41,6 +41,7 @@ Before creating a more tabular summary of the datasets, we can keep track of the
 -   [TROMPA‐MER](https://github.com/juansgomez87/vis-mtg-mer)
 -   [VGMIDI](https://github.com/lucasnfe/vgmidi)
 -   [EmoBox (INTERSPEECH)](https://github.com/emo-box/EmoBox)
+-   [NTWICM (pilot)](https://ismir2011.ismir.net/papers/PS6-18.pdf)
 
 ## Discarded
 
