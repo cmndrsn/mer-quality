@@ -199,7 +199,7 @@ df$check <- NULL
 
 # summarize rater coverage
 summary(df$rater)
-summary(df$tiebreaker)
+summary(as.factor(df$tiebreaker))
 
 # summarize dataset coverage
 summary(df$dataset)
