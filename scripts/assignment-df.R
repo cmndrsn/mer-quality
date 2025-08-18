@@ -107,31 +107,103 @@ df <- rbind(df,
 # sort by dataframe and assign each rater a role (two raters, one tiebreaker)
 df <- df[order(df$dataset),]
 
-# shuffle names assigned to each dataset
+
+# Define tiebreakers --------------------------------------------------
+
+# expand out raters to match number of dataframes
+rater_long <- rep(
+  unique(df$rater), 
+  each = floor(length(unique(df$dataset))/length(unique(df$rater)))
+)
+
+# account for mismatch in length of raters and data (not divisible)
+set.seed(1)
+rater_long <- c(rater_long, 
+  sample(
+  rater_long, 
+  size = length(unique(df$dataset)) - length(rater_long)
+  )
+) |>
+  sort()
 
 
-{
-df <- df |>
-  dplyr::group_by(dataset) |>
-  dplyr::mutate(rater = sample(rater),
-                tiebreaker = sample(c(TRUE, FALSE, FALSE)))
-
-# print dataframe
-
-knitr::kable(df |> dplyr::select(dataset, rater, tiebreaker))
-
-# summarize tiebreaker coverage
-
-df |>
-  dplyr::group_by(rater) |> 
-  dplyr::summarize(n_tiebreaker = sum(tiebreaker)) |> 
-  knitr::kable()
+# first, prepare a temporary version of the datasets that can be reduced
+tmp <- df
+# record all datasets
+dfs <- df$dataset |> unique()
+# create empty arrays recording assigned dfs, raters, along with 
+# an empty dataframe which will record new assignments
+df_assigned <- c()
+rater_assigned <- c()
+tiebreaker_df <- data.frame()
+# loop through the raters
+for(this_rater in unique(rater_long)) {
+  # if last rater, simply assign remaining datasets
+  if(this_rater == dplyr::last(unique(rater_long))) {
+    tiebreaker_df <- rbind(
+      tiebreaker_df,
+      data.frame(
+        dataset = df_remaining,
+        tiebreaker = this_rater
+      )
+    )
+    message("Assigned ", this_rater)
+  } else {
+    # otherwise, count how many assignments this rater needs
+  len_rater <- 4#length(rater_long[rater_long == this_rater])
+  # sample len_rater datasets that this rater evaluated
+  df_sampled <- sample(
+    subset(tmp, rater == this_rater)$dataset, 
+    size = len_rater
+  )
+  # record which datasets got assigned
+  df_assigned <- c(df_assigned, as.character(df_sampled))
+  # record which rater got assigned
+  rater_assigned <- c(rater_assigned, this_rater)
+  # update the tiebreaking dataframe with this assignmnet
+  tiebreaker_df <- rbind(
+    tiebreaker_df, 
+    data.frame(
+      dataset = df_sampled,
+      tiebreaker = this_rater
+    )
+  )
+  # check how many datasets remain
+  df_remaining <- setdiff(dfs, df_assigned)
+  # check how many raters remain
+  rater_remaining <- setdiff(unique(rater_long), rater_assigned)
+  # update our temporary df to exclude assigned raters and datasets
+  tmp <- dplyr::filter(tmp, 
+                dataset %in% df_remaining,
+                rater %in% rater_remaining)
+  message("Assigned ", this_rater)
+  }
 }
+
+
+df <- dplyr::left_join(df, tiebreaker_df)
+
+ # double check assigned tiebreaker actually evaluated dataset
+df <- df |>
+  dplyr::group_by(
+    dataset
+  ) |>
+  dplyr::mutate(check = tiebreaker %in% rater)
+# subset mismatches
+tmp <- df[df$check == FALSE,]
+# replace tiebreaker assignment 
+tmp$tiebreaker <- sample(tmp$rater, 1)
+df <- df[df$check == TRUE,]
+df <- rbind(df, tmp)
+df$check <- NULL
 
 # summarize rater coverage
 summary(df$rater)
+summary(df$tiebreaker)
 
 # summarize dataset coverage
 summary(df$dataset)
 
-df |> knitr::kable()
+df |> 
+  knitr::kable() |>
+  writeLines(con = "content/assignment.md")
