@@ -186,8 +186,6 @@ for(this_rater in unique(rater_long)) {
 
 
 df <- dplyr::left_join(df, tiebreaker_df)
-
-ezDesign(df, dataset, rater)
 df |> 
   knitr::kable() |>
   writeLines(con = "content/assignment.md")
