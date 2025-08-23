@@ -10,7 +10,7 @@ assign_dfs <- function(
 ) {
   n_rater <- length(raters)
   # store the number of datasets each rater must evalaute
-  n_df_rater <- floor((n_df*n_rater_df)/n_rater) - 1 # dataframes per rater
+  n_df_rater <- floor((n_df*n_rater_df)/n_rater) - 1 # dataframes per rater (less 1. we'll assign the remaining datasets in a second step to avoid an infinite loop.)
 
   # create empty list to store dataset assignments
   rating_list <- list()
@@ -74,14 +74,14 @@ mer_data <- mer_data[!mer_data %in% c("EmoBox (INTERSPEECH)", "NTWICM (pilot)", 
 levels(df$dataset) <- mer_data
 
 
-# Assign underrepresented datasets --------------------------------
+# Assign remaining datasets --------------------------------
 
 # get under-represented datasets
 unassigned <- levels(df$dataset)[summary(df$dataset) < 3]
 # populate empty list to assign remaining datasets
 assignment_list <- list()
 
-
+# save the raters as a temporary variable we'll update 
 tmp1 <- raters
 # loop through remaining datasets that need to be assigned
 for(unassigned_df in unassigned) {
@@ -95,7 +95,7 @@ for(unassigned_df in unassigned) {
   new_assignment <- data.frame(rater = new_rater, dataset = unassigned_df)
   # add new assignment to the list of assignments
   assignment_list[[unassigned_df]] <- new_assignment
-  # remove this rater from assignable raters
+  # remove this rater from assignable raters (so we don't assign too many to just one rater)
   tmp1 <- tmp1[tmp1 != new_rater]
 }
 
@@ -113,7 +113,7 @@ df <- rbind(df,
 df <- df[order(df$dataset),]
 
 
-# Define tiebreakers --------------------------------------------------
+# Define moderator --------------------------------------------------
 
 # expand out raters to match number of dataframes
 rater_long <- rep(
@@ -184,7 +184,7 @@ for(this_rater in unique(rater_long)) {
   }
 }
 
-
+# write the results
 df <- dplyr::left_join(df, tiebreaker_df)
 df |> 
   knitr::kable() |>
