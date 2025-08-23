@@ -1,4 +1,4 @@
-|rater |dataset      |tiebreaker |
+|rater |dataset      |moderator |
 |:-----|:------------|:----------|
 |VA    |AMG1608      |JGC        |
 |XH    |AMG1608      |JGC        |
