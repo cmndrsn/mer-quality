@@ -7,7 +7,7 @@ definitions <- list(
   documentation = "For the purpose of this questionnaire, the term 'documentation' pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page.",
   precalculated = "Precalculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.",
   'human-in-the-loop' = "This is the definition for human-in-the-loop approaches",
-  enrichment = "Enrichment examples include demographic data, free-text annotations, mood-control items, musical sophistication measurements.",
+  enrichment = "Enrichment examples can include demographic data, free-text annotations, mood-control items, musical sophistication measurements, or metadata pertaining to the stimuli used.",
   drift = "Definition!",
   contextual = "Definition!"
 )

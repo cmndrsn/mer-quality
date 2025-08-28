@@ -21,7 +21,8 @@ output: html_document
 ~~- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019).~~ 
 - You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
 -   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as proceed and are also viewable at github.com/cmndrsn/mer-quality/issues
--   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories. 
+-   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories.
+-  The 'none selected' response can be used when all other response options are not applicable to the dataset being evaluated.
 ~~\### Datasheet~~
 
 ~~\#### Motivation & Additional Information~~
@@ -34,26 +35,27 @@ output: html_document
 
 -   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students)
 -   Reliability of annotations is adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
--   If reported, how much did the dataset cost to prepare?
+~~-   If reported, how much did the dataset cost to prepare?~~
 -   The dataset contributes unique insight into cultural differences in MER.
 
 #### Collection
 
--   Accuracy is improved by user-centered approaches for data labeling/augmentation.
+-   The study incorporates user-centered approaches for data labeling.
 -   (If applicable) Study provides information about screening and training of annotators.
 
 #### Cleaning & preprocessing
 
 -   Data entries are unique and redundant cases are removed.
--   Feature complexity is reduced where appropriate to mitigate overfitting or to improve interpretability.
+-   (If applicable) Feature engineering is justified by the authors.
 
 #### ML building
 
--   Completeness of data is improved by enrichment.
+-   Completeness of data is improved through enrichment of participant data.
+-   Completeness of data is improved through enrichment of stimuli.
 
 #### Deployment
 
--   Validity of data is ensured through adherence to existing theory, and by checking for representational drift.
+-   Validity of data is ensured through adherence to the theoretical emotion framework used, and by checking for representational drift.
 
 ### Contextual
 
@@ -64,15 +66,14 @@ output: html_document
 -   The strategy for selecting emotion taxonomies and constructs is clearly justified
 -   The strategy for selecting music stimuli and genres is clearly justified
 -   The strategy for sampling participants and relevant information (e.g., gender, culture, expertise) is clearly justified
--   The background of annotators is relevant to the music selection and task design.
-
+-   The annotators' demographic/musical background is appropriate when considering the goal(s) of the study.
 #### Collection
 
 -   Context coverage is supported by guidelines on potential power imbalances, ethics and inclusivity
 
 #### Cleaning & preprocessing
 
--   If the dataset contains contextual biases, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. For example, the study might validate their findings through real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
+-   If the dataset contains sampling bias, the training distribution is resampled to reduce bias and increase comparability to existing reference standards. For example, the study might validate their findings through real-world representative samples or comparison to previous studies examining similar demographics/musical styles.
 -   Data classes are adequately represented and convincingly measure how well the dataset fits the real-world problem.
 
 #### Maintenance
@@ -81,9 +82,9 @@ output: html_document
 
 #### ML building
 
--   The selected audio features are contextually valid.
--   The emotion taxonomies and constructs are contextually valid.
--   The music stimuli and genres are contextually valid.
+-   The authors explain how the chosen audio features are contextually valid with respect to the study aims.
+-   The authors explain how the chosen emotion constructs and taxonomies are contextually validity with respect to the study aims?.
+-   The authors explain how the chosen music stimuli and genres are contextually validity with respect to the study aims.
 
 #### Verification & testing
 
