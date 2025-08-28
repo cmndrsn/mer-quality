@@ -19,10 +19,9 @@ output: html_document
 
 -   In this interactive module, you will be asked to annotate and evaluate the quality of documentation for open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from guidelines by Priestley et al. (2023) in an effort to improve documentation surrounding MER datasets. 
 ~~- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019).~~ 
-- You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree.
--   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as proceed and are also viewable at github.com/cmndrsn/mer-quality/issues
+-   You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree. If none of these response options seem applicable, use the 'None selected' response option to indicate "Not Applicable".
+-   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as you proceed through the evaluation and are also viewable at github.com/cmndrsn/mer-quality/issues/10
 -   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories.
--  The 'none selected' response can be used when all other response options are not applicable to the dataset being evaluated.
 -  Your responses will automatically be saved in a web server, however downloading a copy of your responses locally is strongly recommended to prevent data loss. 
 ~~\### Datasheet~~
 
@@ -42,7 +41,7 @@ output: html_document
 #### Collection
 
 -   The study incorporates user-centered approaches for data labeling.
--   (If applicable) Study provides information about screening and training of annotators.
+-   (If applicable) The study provides information about screening and training of annotators.
 
 #### Cleaning & preprocessing
 
@@ -107,7 +106,7 @@ output: html_document
 
 #### Cleaning & preprocessing
 
--   Publicly available notebooks or scripts (where applicable) are clearly commented.
+-   (If applicable) Publicly available notebooks or scripts are clearly commented.
 -   Data sourced from heterogeneous sources are adequately reformatted, normalised or aggregated.
 -   The response apparatus provides participants with options to differentiate ratings for difficult cases, or to express uncertainty/inapplicability of an emotion label. Possible examples toward this goal include granular rating scales, confidence ratings, free-text responses, or the option to opt out of rating excerpts if uncertain.
 -   How data domains (annotations, music, lyrics, tags, features) were processed is clearly documented.
@@ -133,7 +132,7 @@ output: html_document
 
 #### Cleaning & preprocessing
 
--   Security of sensitive data is supported by anonymisation (where applicable).
+-   (If applicable) Security of sensitive data is supported by anonymisation.
 
 #### Maintenance
 
@@ -162,6 +161,4 @@ output: html_document
 
 #### TODO
 
-Define what we mean by documentation (details about trusted repos, etc.)
 
-Terms: - Trusted repository - Documentation - Precalculated features - Have baseline models been applied? (bonus Q)?

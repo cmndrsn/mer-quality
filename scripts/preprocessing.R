@@ -92,7 +92,7 @@ ind_fc_options <- list(
    documentation = "For the purpose of this questionnaire, the term 'documentation' pertains to information about accessing data and analyses relevant to the dataset in question through a public-facing source, such as an article, preprint, readme, or web page.",
    'pre-calculated' = "Pre-calculated features refers to features that were analyzed prior to data modelling. For example, some datasets include features from audio extraction tools like Essentia, Marsyas, or OpenSMILE.",
    'user-centered' = "Examples of user-centered approaches include recruiting third party to rate emotion where two others disagree, feedback loops between individual and contextual systems, or data collection tools that raise actionable alerts to warn users of unexpected values in advance.",
-   enrichment = "Enrichment examples include demographic data, free-text annotations, mood-control items, musical sophistication measurements.",
+   enrichment = "Enrichment examples can include demographic data, free-text annotations, mood-control items, musical sophistication measurements, or metadata pertaining to the stimuli used.",
    drift = "Conceptual drift occurs when the statistical relationships between input data and target values change unpreditably over time (Computer Networks, 2022). drift is an evolution of data that invalidates the data model. It happens when the statistical properties of the target variable, which the model is trying to predict, change over time in unforeseen ways.",
    'contextual bias' = "Contextual bias refers to a situation when a model's performance hinges on specific contextual features related to the prediction task. For example, an algorithm designed to predict emotion annotations in different kinds of music would contain bias if it was only trained on one genre.",
    'contextually biased' = "Contextual bias refers to a situation when a model's performance hinges on specific contextual features related to the prediction task. For example, an algorithm designed to predict emotion annotations in different kinds of music would contain bias if it was only trained on one genre.",
@@ -100,7 +100,8 @@ ind_fc_options <- list(
    domain = "Data domains refer to distinct data sources relevant for the MER task, such as direct/indirect annotations, metadata, analyzed features, physiological data, etc.",
    'direct or indirect' = "Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.",
    'emotion taxonomies' = "Emotion taxonomies refer to the construct definition used to collection emotion annotations. Examples include Russell's circumplex model, Kivy's basic emotions, emotionality ratings, and other variants.",
-   coverage = "Coverage refers to the degree to which the data account for all potential cases that are relevant for the accurate performance of the system."
+   coverage = "Coverage refers to the degree to which the data account for all potential cases that are relevant for the accurate performance of the system.",
+   'feature engineering' = "Feature engineering refers to the process of 'transform[ing] ... raw data sources into applicable and meaningful features that represent a certain property of the observations.' (Verdonck et al., 2024)."
  )
 
 definitions_dq <- list(
