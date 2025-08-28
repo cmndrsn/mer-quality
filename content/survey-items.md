@@ -23,6 +23,7 @@ output: html_document
 -   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as proceed and are also viewable at github.com/cmndrsn/mer-quality/issues
 -   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories.
 -  The 'none selected' response can be used when all other response options are not applicable to the dataset being evaluated.
+-  Your responses will automatically be saved in a web server, however downloading a copy of your responses locally is strongly recommended to prevent data loss. 
 ~~\### Datasheet~~
 
 ~~\#### Motivation & Additional Information~~
@@ -83,8 +84,8 @@ output: html_document
 #### ML building
 
 -   The authors explain how the chosen audio features are contextually valid with respect to the study aims.
--   The authors explain how the chosen emotion constructs and taxonomies are contextually validity with respect to the study aims?.
--   The authors explain how the chosen music stimuli and genres are contextually validity with respect to the study aims.
+-   The authors explain how the chosen emotion constructs and taxonomies are contextually valid with respect to the study aims.
+-   The authors explain how the chosen music stimuli and genres are contextually valid with respect to the study aims.
 
 #### Verification & testing
 
