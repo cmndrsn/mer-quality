@@ -9,10 +9,6 @@ library(DT)
 
 source(here::here("scripts/preprocessing.R"))
 
-# create session id based on current date
-
-session_id <- format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
-
 # create ui
 
 ui <- bslib::page_fluid(
@@ -54,6 +50,17 @@ server <- function(input, output, session) {
   
   # track prompt index
   this_prompt <- reactiveVal(1)
+ 
+  reactive_date <- reactive({
+    times <- c()
+    if (this_prompt() == 1) {
+       times <- c(times, get_unixtime())
+    } else {
+      times <- c(times, NA)
+    }
+    return(times)
+  })
+  
   
   output$additional_info <- renderText({
     label <- generate_defs(
@@ -81,8 +88,15 @@ server <- function(input, output, session) {
       dataset = character(),
       prompt_number = character(),
       timestamp = character(),
+      session_id = numeric(),
       stringsAsFactors = FALSE
     ) 
+  )
+  
+  session <- reactiveValues(
+    time = data.frame(
+      unix = numeric()
+    )
   )
   
   # render heading
@@ -121,7 +135,7 @@ server <- function(input, output, session) {
       tagList(
         radioButtons("rating", "Item rating:",
            c("Strongly Disagree" = 1, "Somewhat Disagree" = 2,
-             "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5, "NA" = "NA", "None selected" = NA),
+             "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5, "Not Applicable" = NA, "None selected" = 0),
            # this code is very verbose...
            selected = ifelse( # if no value was previously selected:
              is.null(tail(responses$data$rating[responses$data$prompt_number == this_prompt()], 1)),
@@ -202,7 +216,9 @@ server <- function(input, output, session) {
 
   # when user advances in survey, save columns based on response type
   observeEvent(input[["next"]], {
-    
+  
+    # update timestamp dataframe
+   session$time <- rbind(session$time, data.frame(unix = reactive_date()))
     # Observe cell edits and update the reactiveVal
     observeEvent(input$editable_table_cell_edit, {
       info <- input$editable_table_cell_edit
@@ -236,16 +252,17 @@ server <- function(input, output, session) {
           dataset = input$df,
           rater =  input$rater,
           prompt_number = this_prompt(),
-          timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
+          timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S"),
+          session_id = dplyr::first(session$time$unix)
         )) |>
-        dplyr::group_by(dataset, rater, prompt_number, prompt) |>
+        dplyr::group_by(session_id, dataset, rater, prompt_number, prompt) |>
         dplyr::summarise(rating = dplyr::last(rating), response = dplyr::last(response), timestamp = dplyr::last(timestamp))
       write.csv(
         responses$data,
         file = paste0(
           'eval/',
           unique(input$rater), '_', 
-          unique(input$df), '_', dplyr::first(responses$data$timestamp), '.csv') |>
+          unique(input$df), '_', dplyr::first(session$time$unix), '.csv') |>
           tolower(),
         row.names = FALSE,
       )
@@ -257,6 +274,8 @@ server <- function(input, output, session) {
   
   # previous question
   observeEvent(input[["previous"]], {
+    # update timestamp dataframe
+    session$time <- rbind(session$time, data.frame(unix = reactive_date()))
     responses$data <- rbind(
       responses$data, 
       data.frame(
@@ -278,14 +297,15 @@ server <- function(input, output, session) {
         dataset = input$df,
         rater =  input$rater,
         prompt_number = this_prompt(),
-        timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S")
+        timestamp = format(lubridate::now(tzone = "UCT"), "%Y-%m-%d-%H-%M-%S"),
+        session_id = dplyr::first(session$time$unix)
       ))
     write.csv(
       responses$data,
       file = paste0(
         'eval/',
         unique(input$rater), '_', 
-        unique(input$df), '_', dplyr::first(responses$data$timestamp), '.csv') |>
+        unique(input$df), '_', dplyr::first(session$time$unix), '.csv') |>
         tolower(),
       row.names = FALSE,
     )
@@ -300,7 +320,7 @@ server <- function(input, output, session) {
       paste0(
         'merquality_',
         unique(input$rater), '_', 
-        unique(input$df), '_', session_id, '.csv') |>
+        unique(input$df), '_', dplyr::first(session$time$unix), '.csv') |>
         tolower()
     },
     content = function(file) {
