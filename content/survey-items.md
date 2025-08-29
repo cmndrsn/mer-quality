@@ -19,7 +19,7 @@ output: html_document
 
 -   In this interactive module, you will be asked to annotate and evaluate the quality of documentation for open-access data used in Music Emotion Recognition (MER) studies. The module uses questions adapted from guidelines by Priestley et al. (2023) in an effort to improve documentation surrounding MER datasets. 
 ~~- In the first stage, you will be asked to fill in information surrounding the creators and design of the dataset. These questions come from Datasheets for Datasets by Gebru et al. (2019).~~ 
--   You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree. If none of these response options seem applicable, use the 'None selected' response option to indicate "Not Applicable".
+-   You will be asked to rate several data quality dimension items on a scale from 1 = completely disagree to 5 = completely agree. If you believe none of these response options are representative, you can use the 'NA' (not applicable) response option instead.
 -   You will evaluate datasets along four data quality (DQ) dimensions: Intrinsic, Contextual, Representational, and Accessibility DQ. Definitions for each dimension will appear in the sidebar as you proceed through the evaluation and are also viewable at github.com/cmndrsn/mer-quality/issues/10
 -   Please base your evaluations on the relevant documentation for each dataset, including papers/preprints, as well as any pertinent webpages such as Github repositories, landing pages, or trusted repositories.
 -  Your responses will automatically be saved in a web server, however downloading a copy of your responses locally is strongly recommended to prevent data loss. 
