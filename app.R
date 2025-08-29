@@ -135,7 +135,7 @@ server <- function(input, output, session) {
       tagList(
         radioButtons("rating", "Item rating:",
            c("Strongly Disagree" = 1, "Somewhat Disagree" = 2,
-             "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5, "Not Applicable" = NA, "None selected" = 0),
+             "Neither Agree Nor Disagree" = 3, "Somewhat Agree" = 4, "Strongly Agree" = 5, "Not Applicable" = "NA", "None selected" = NA),
            # this code is very verbose...
            selected = ifelse( # if no value was previously selected:
              is.null(tail(responses$data$rating[responses$data$prompt_number == this_prompt()], 1)),
