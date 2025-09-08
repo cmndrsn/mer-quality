@@ -1,61 +1,61 @@
-|rater |dataset      |moderator |
-|:-----|:------------|:----------|
-|VA    |AMG1608      |JGC        |
-|XH    |AMG1608      |JGC        |
-|JGC   |AMG1608      |JGC        |
-|TE    |CCMED-WCMED  |XH         |
-|XH    |CCMED-WCMED  |XH         |
-|JGC   |CCMED-WCMED  |XH         |
-|VA    |CH818        |CA         |
-|TE    |CH818        |CA         |
-|CA    |CH818        |CA         |
-|VA    |DEAM         |TE         |
-|TE    |DEAM         |TE         |
-|CA    |DEAM         |TE         |
-|VA    |EMMA         |VA         |
-|TE    |EMMA         |VA         |
-|JGC   |EMMA         |VA         |
-|TE    |EMOPIA       |CA         |
-|CA    |EMOPIA       |CA         |
-|JGC   |EMOPIA       |CA         |
-|VA    |Emotify      |CA         |
-|CA    |Emotify      |CA         |
-|XH    |Emotify      |CA         |
-|VA    |GlobalMood   |VA         |
-|TE    |GlobalMood   |VA         |
-|CA    |GlobalMood   |VA         |
-|CA    |MERGE        |JGC        |
-|XH    |MERGE        |JGC        |
-|JGC   |MERGE        |JGC        |
-|TE    |Moodo        |VA         |
-|XH    |Moodo        |VA         |
-|VA    |Moodo        |VA         |
-|TE    |MTG-Jamendo  |TE         |
-|XH    |MTG-Jamendo  |TE         |
-|JGC   |MTG-Jamendo  |TE         |
-|VA    |MUSAV        |VA         |
-|CA    |MUSAV        |VA         |
-|JGC   |MUSAV        |VA         |
-|TE    |MUSIFEAST-17 |XH         |
-|CA    |MUSIFEAST-17 |XH         |
-|JGC   |MUSIFEAST-17 |XH         |
-|XH    |NJU-V1       |TE         |
-|TE    |NJU-V1       |TE         |
-|TE    |NTUMIR       |XH         |
-|XH    |NTUMIR       |XH         |
-|JGC   |NTUMIR       |XH         |
-|VA    |PMEmo        |JGC        |
-|XH    |PMEmo        |JGC        |
-|JGC   |PMEmo        |JGC        |
-|VA    |PSIC3839     |TE         |
-|TE    |PSIC3839     |TE         |
-|CA    |PSIC3839     |TE         |
-|CA    |Soundtracks  |XH         |
-|XH    |Soundtracks  |XH         |
-|JGC   |Soundtracks  |XH         |
-|VA    |TROMPA‐MER   |CA         |
-|XH    |TROMPA‐MER   |CA         |
-|CA    |TROMPA‐MER   |CA         |
-|VA    |VGMIDI       |JGC        |
-|CA    |VGMIDI       |JGC        |
-|JGC   |VGMIDI       |JGC        |
+|rater |dataset      |dataset_id
+|:-----|:------------|:------------|
+|VA    |AMG1608      |1
+|XH    |AMG1608      |1
+|JGC   |AMG1608      |1
+|TE    |CCMED-WCMED  |2
+|XH    |CCMED-WCMED  |2
+|JGC   |CCMED-WCMED  |2
+|VA    |CH818        |3
+|TE    |CH818        |3
+|CA    |CH818        |3
+|VA    |DEAM         |4
+|TE    |DEAM         |4
+|CA    |DEAM         |4
+|VA    |EMMA         |5
+|TE    |EMMA         |5
+|JGC   |EMMA         |5
+|TE    |EMOPIA       |6
+|CA    |EMOPIA       |6
+|JGC   |EMOPIA       |6
+|VA    |Emotify      |7
+|CA    |Emotify      |7
+|XH    |Emotify      |7
+|VA    |GlobalMood   |8
+|TE    |GlobalMood   |8
+|CA    |GlobalMood   |8
+|CA    |MERGE        |9
+|XH    |MERGE        |9
+|JGC   |MERGE        |9
+|TE    |Moodo        |10
+|XH    |Moodo        |10
+|VA    |Moodo        |10
+|TE    |MTG-Jamendo  |11
+|XH    |MTG-Jamendo  |11
+|JGC   |MTG-Jamendo  |11
+|VA    |MUSAV        |12
+|CA    |MUSAV        |12
+|JGC   |MUSAV        |12
+|TE    |MUSIFEAST-17 |13
+|CA    |MUSIFEAST-17 |13
+|JGC   |MUSIFEAST-17 |13
+|XH    |NJU-V1       |14
+|TE    |NJU-V1       |14
+|TE    |NTUMIR       |15
+|XH    |NTUMIR       |15
+|JGC   |NTUMIR       |15
+|VA    |PMEmo        |16
+|XH    |PMEmo        |16
+|JGC   |PMEmo        |16
+|VA    |PSIC3839     |17
+|TE    |PSIC3839     |17
+|CA    |PSIC3839     |17
+|CA    |Soundtracks  |18
+|XH    |Soundtracks  |18
+|JGC   |Soundtracks  |18
+|VA    |TROMPA‐MER   |19
+|XH    |TROMPA‐MER   |19
+|CA    |TROMPA‐MER   |19
+|VA    |VGMIDI       |20
+|CA    |VGMIDI       |20
+|JGC   |VGMIDI       |20
