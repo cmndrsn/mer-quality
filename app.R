@@ -128,7 +128,7 @@ server <- function(input, output, session) {
           "", 
           choices = datasets
         ),
-        textInput("rater", "Please enter your initials"),
+        textInput("rater", "Please enter your codename"),
       )
       # likert-type rating scale for rating measurements, along with text
     } else if (this_prompt() %in% ind_rating) {
