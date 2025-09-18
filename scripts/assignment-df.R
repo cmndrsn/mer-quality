@@ -1,7 +1,7 @@
-set.seed(6)
+set.seed(7)
 # Assign each rater 12 unique datasets ----------------------------
 
-raters <- sample(c("CA", "TE", "JGC", "XH", "VA"))
+raters <- sample(c("parrot", "blackbird", "zebra", "gopher", "elephant"))
 
 assign_dfs <- function(
     n_df = 20,
@@ -185,7 +185,7 @@ for(this_rater in unique(rater_long)) {
 }
 
 # write the results
-df <- dplyr::left_join(df, tiebreaker_df)
+# df <- dplyr::left_join(df, tiebreaker_df)
 df |> 
   knitr::kable() |>
   writeLines(con = "content/assignment.md")

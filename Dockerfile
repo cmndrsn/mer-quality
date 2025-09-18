@@ -38,6 +38,7 @@ COPY lib/progress-bar.R lib/progress-bar.R
 COPY lib/survey-items-df.R lib/survey-items-df.R
 COPY lib/get-datasets.R lib/get-datasets.R
 COPY lib/info.R lib/info.R
+COPY lib/get-unixtime.R lib/get-unixtime.R
 COPY content/survey-items.md content/survey-items.md
 COPY content/datasets.md content/datasets.md
 COPY scripts/preprocessing.R scripts/preprocessing.R
