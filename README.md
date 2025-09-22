@@ -10,6 +10,10 @@ See [survey-items.md](content/survey-items.md)
 
 See [datasets.md](content/datasets.md)
 
+## Dataset rater assignments
+
+See [content/assignment.md](content/assignment.md)
+
 ## Annotation Consistency
 
 See [analysis-plan.md](content/analysis-plan.md)
