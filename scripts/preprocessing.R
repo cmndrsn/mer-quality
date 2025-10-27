@@ -101,7 +101,8 @@ ind_fc_options <- list(
    'direct or indirect' = "Direct annotation methods comprise participants ratings, whereas indirect methods include web scraping labels or algorithmic judgments.",
    'emotion taxonomies' = "Emotion taxonomies refer to the construct definition used to collection emotion annotations. Examples include Russell's circumplex model, Kivy's basic emotions, emotionality ratings, and other variants.",
    coverage = "Coverage refers to the degree to which the data account for all potential cases that are relevant for the accurate performance of the system.",
-   'feature engineering' = "Feature engineering refers to the process of 'transform[ing] ... raw data sources into applicable and meaningful features that represent a certain property of the observations.' (Verdonck et al., 2024)."
+   'feature engineering' = "Feature engineering refers to the process of 'transform[ing] ... raw data sources into applicable and meaningful features that represent a certain property of the observations.' (Verdonck et al., 2024).",
+   'data annotations are accessible' = "Select NA if splits aren't explicitly shared (this prompt may not apply to most datasets)."
  )
 
 definitions_dq <- list(

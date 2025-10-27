@@ -33,12 +33,12 @@ output: html_document
 
 #### Use case & design
 
--   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students)
+-   The paper justifies its selection of human annotators and recruitment methodology (e.g., crowdsourced, experts, psychology students).
 -   Reliability of annotations is adequately reported in the paper, or possible to measure from the data (i.e., raw annotations available).
 ~~-   If reported, how much did the dataset cost to prepare?~~
--   The dataset contributes unique insight into cultural differences in MER.
+-   The dataset contributes to unique, well-defined, aspects of culture (i.e., people and music well defined in cultural terms).
 
-#### Collection
+#### Data Collection
 
 -   The study incorporates user-centered approaches for data labeling.
 -   (If applicable) The study provides information about screening and training of annotators.
@@ -61,15 +61,16 @@ output: html_document
 
 #### Use case & design
 
--   The paper provides the impression features were selected in advance of modeling
--   The strategy for feature selection is clearly justified
--   The strategy for selecting emotion taxonomies and constructs is clearly justified
--   The strategy for selecting music stimuli and genres is clearly justified
--   The strategy for sampling participants and relevant information (e.g., gender, culture, expertise) is clearly justified
+-   The paper provides the impression features were selected in advance of modeling.
+-   The strategy for feature selection is clearly justified.
+-   The strategy for selecting emotion taxonomies and constructs is clearly justified.
+-   The strategy for selecting music stimuli and genres is clearly justified.
+-   The strategy for sampling participants and relevant information (e.g., gender, culture, expertise) is clearly justified.
 -   The annotators' demographic/musical background is appropriate when considering the goal(s) of the study.
-#### Collection
 
--   Context coverage is supported by guidelines on potential power imbalances, ethics and inclusivity
+#### Data Collection
+
+-   The study design accounts for ethics, inclusivity, and potential power imbalances in the data collection procedure.
 
 #### Cleaning & preprocessing
 
@@ -83,7 +84,6 @@ output: html_document
 #### ML building
 
 -   The authors explain how the chosen audio features are contextually valid with respect to the study aims.
--   The authors explain how the chosen emotion constructs and taxonomies are contextually valid with respect to the study aims.
 -   The authors explain how the chosen music stimuli and genres are contextually valid with respect to the study aims.
 
 #### Verification & testing
@@ -96,13 +96,15 @@ output: html_document
 #### Use case & design
 
 -   ~~Documentation on user requirements and dataset design are clear and provide the impression of credibility~~
--   Where data domains (annotations, music, lyrics, tags, features) come from is clearly explained.
+-   The sources of the data (annotations, music, lyrics, tags, features) are clearly explained.
 
-#### Collection
+#### Data Collection
 
 -   The data collection process is clearly documented (e.g., using datasheets, checklists).
 -   Annotation constructs are defined clearly to mitigate inaccuracies in human annotations.
--   The annotation scheme adheres to the theory it follows and can it be interpreted by others in the same way.
+-   The annotation scheme adheres to the theory it follows.
+-   (If applicable) Local language translation procedures are clearly explained.
+-   (If applicable) Language localization accounts for linguistic/cultural differences in translated concepts.
 
 #### Cleaning & preprocessing
 
@@ -126,7 +128,7 @@ output: html_document
 
 -   ~~Availability of data can be supported by infrastructure for data collection and management (particularly in large organisations)~~
 
-#### Collection
+#### Data Collection
 
 -   Research integrity frameworks and procedures for consent, transparency, ethics and privacy are reported.
 
