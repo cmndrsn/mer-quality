@@ -6,13 +6,15 @@ Quality analysis of MER datasets
 
 See [survey-items.md](content/survey-items.md)
 
-## Datasets to be annotated
+## Datasets to be annotated and accompanying metadata
 
 See [datasets.md](content/datasets.md)
 
+See [dataset-metadata.md](content/dataset-metadata.md)
+
 ## Dataset rater assignments
 
-See [content/assignment.md](content/assignment.md)
+See [assignment.md](content/assignment.md)
 
 ## Annotation Consistency
 
